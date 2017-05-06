@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  precinct_id: MyString
+  district_score: 9.99
+  district_rank: 1
+  municipality_rank: 1
+  municipality: one
+
+two:
+  precinct_id: MyString
+  district_score: 9.99
+  district_rank: 1
+  municipality_rank: 1
+  municipality: two

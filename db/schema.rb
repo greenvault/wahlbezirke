@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506161557) do
+ActiveRecord::Schema.define(version: 20170506161333) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "district_id"
@@ -27,17 +27,6 @@ ActiveRecord::Schema.define(version: 20170506161557) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["district_id"], name: "index_municipalities_on_district_id"
-  end
-
-  create_table "precincts", force: :cascade do |t|
-    t.string   "precinct_id"
-    t.decimal  "district_score"
-    t.integer  "district_rank"
-    t.integer  "municipality_rank"
-    t.integer  "municipality_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["municipality_id"], name: "index_precincts_on_municipality_id"
   end
 
   create_table "states", force: :cascade do |t|

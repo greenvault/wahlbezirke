@@ -4,6 +4,6 @@ class AddIndexToStates < ActiveRecord::Migration[5.0]
   end
 
   def self.down
-    remove_index :states, :name, unique: true
+    remove_index :states, :name
   end
 end

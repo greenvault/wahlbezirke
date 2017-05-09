@@ -1,0 +1,17 @@
+.row
+  .col-sm-6
+    - if @district.municipalities.any?
+      %h3 Gemeinden
+      table.table
+        thead
+          tr
+            th Name
+            th Gemeinde-ID
+          - @municipalities.each do |m|
+            = render municipality_item, municipality: m
+
+
+
+
+
+

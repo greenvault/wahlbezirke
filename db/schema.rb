@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506161333) do
+ActiveRecord::Schema.define(version: 20170509102124) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "district_id"
     t.integer  "state_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["district_id"], name: "index_districts_on_district_id", unique: true
     t.index ["state_id"], name: "index_districts_on_state_id"
   end
 
@@ -27,6 +28,20 @@ ActiveRecord::Schema.define(version: 20170506161333) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["district_id"], name: "index_municipalities_on_district_id"
+    t.index ["municipality_id"], name: "index_municipalities_on_municipality_id", unique: true
+    t.index ["name"], name: "index_municipalities_on_name", unique: true
+  end
+
+  create_table "precincts", force: :cascade do |t|
+    t.string   "precinct_id"
+    t.decimal  "district_score"
+    t.integer  "district_rank"
+    t.integer  "municipality_rank"
+    t.integer  "municipality_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["municipality_id"], name: "index_precincts_on_municipality_id"
+    t.index ["precinct_id"], name: "index_precincts_on_precinct_id", unique: true
   end
 
   create_table "states", force: :cascade do |t|
@@ -34,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170506161333) do
     t.string   "abbreviation"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.index ["name"], name: "index_states_on_name", unique: true
   end
 
 end

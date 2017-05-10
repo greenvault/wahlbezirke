@@ -1,1 +1,10 @@
-So districts. Much wow.
+.row
+  .col-sm-6
+    %h3 Wahlbezirke
+    %p
+      There are
+      = @districts.count
+      districts here!
+      Bitte Wahlbezirk wählen
+      = select_tag 'districts',
+        options_from_collection_for_select(@districts, 'id', 'district_id')

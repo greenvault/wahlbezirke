@@ -1,0 +1,22 @@
+.row
+  .col-sm-12
+    - if @precincts.any?
+      %h3 Wahlbezirke
+      %table.table
+        %thead
+          %tr
+            %th(data-sort="string") Wahlbezirk
+            %th(data-sort="float") Targeting-Score im Wkr
+            %th(data-sort="int") Targeting-Rang im Wkr
+            %th(data-sort="int") Targeting-Rang in Gemeinde
+        %tbody
+        - @precincts.each do |p|
+          %tr
+            %td
+              = p.precinct_id
+            %td
+              = p.district_score
+            %td
+              = p.district_rank
+            %td
+              = p.municipality_rank

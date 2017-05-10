@@ -1,8 +1,10 @@
 class DistrictsController < ApplicationController
-  validates_uniqueness_of :district_id
-
   def index
-    @districts = District.all
+  end
+
+  def show
+    @district = District.find(params[:id])
+    @municipalities = Municipality.where(district: @district)
   end
 
   def new
@@ -17,11 +19,6 @@ class DistrictsController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def show
-    @district = District.find(params[:id])
-    @municipalities = @district.municipalities
   end
 
   private

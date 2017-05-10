@@ -1,6 +1,6 @@
 class AddIndexToMunicipalities < ActiveRecord::Migration[5.0]
   def self.up
-    add_index :municipalities, :name, unique: true
+    add_index :municipalities, :name
     add_index :municipalities, :municipality_id, unique: true
   end
 

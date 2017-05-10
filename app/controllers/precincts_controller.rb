@@ -1,6 +1,4 @@
 class PrecinctsController < ApplicationController
-  validates_uniqueness_of :precinct_id
-
   def new
     @precinct = Precinct.new
   end

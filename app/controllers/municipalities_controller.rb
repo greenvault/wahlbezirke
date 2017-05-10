@@ -1,6 +1,4 @@
 class MunicipalitiesController < ApplicationController
-  validates_uniqueness_of :municipality_id
-
   def index
     @municipalities = Municipality.all
   end
@@ -11,6 +9,11 @@ class MunicipalitiesController < ApplicationController
 
   def create
     @municipality = Municipality.new(municipality_params)
+  end
+
+  def show
+    @municipality = Municipality.find_by(municipality_id: params[:id])
+    @precincts = Precinct.where(municipality: @municipality)
   end
 
   private

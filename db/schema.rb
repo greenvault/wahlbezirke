@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20170509102124) do
     t.datetime "updated_at",      null: false
     t.index ["district_id"], name: "index_municipalities_on_district_id"
     t.index ["municipality_id"], name: "index_municipalities_on_municipality_id", unique: true
-    t.index ["name"], name: "index_municipalities_on_name", unique: true
+    t.index ["name"], name: "index_municipalities_on_name"
   end
 
   create_table "precincts", force: :cascade do |t|
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170509102124) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["municipality_id"], name: "index_precincts_on_municipality_id"
-    t.index ["precinct_id"], name: "index_precincts_on_precinct_id", unique: true
+    t.index ["precinct_id"], name: "index_precincts_on_precinct_id"
   end
 
   create_table "states", force: :cascade do |t|

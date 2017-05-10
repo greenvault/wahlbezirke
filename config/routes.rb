@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resource :states
-  resource :districts
-  resource :precincts
-  resource :municipalities
+  resources :states
+  resources :districts
+  resources :precincts
+  resources :municipalities
   root 'municipalities#index'
 end

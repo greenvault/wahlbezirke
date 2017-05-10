@@ -5,14 +5,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 gem 'rails', '~> 5.0.2'
-gem 'sqlite3'
 gem 'figaro'
 gem 'administrate', '~> 0.6.0'
 gem 'puma', '~> 3.0'
 gem 'haml', '~> 5.0.1'
 gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'jquery-tablesorter', '~> 1.23.9'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
@@ -21,8 +20,12 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
+group :production do
+  gem 'pg'
+end
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'byebug', platform: :mri
 end
 
@@ -34,3 +37,5 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+ruby '2.4.0'

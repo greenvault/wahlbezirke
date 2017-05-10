@@ -12,7 +12,7 @@ class MunicipalitiesController < ApplicationController
   end
 
   def show
-    @municipality = Municipality.find_by(municipality_id: params[:id])
+    find_or_error
     @precincts = Precinct.where(municipality: @municipality)
   end
 
@@ -20,5 +20,11 @@ class MunicipalitiesController < ApplicationController
 
   def municipality_params
     params.require(:municipality).permit(:name, :municipality_id, :district_id)
+  end
+
+  def find_or_error
+    unless @municipality = Municipality.find_by(municipality_id: params[:id])
+      redirect_to :root
+    end
   end
 end

@@ -2,7 +2,7 @@
   .col-sm-12
     - if @precincts.any?
       %h3 Wahlbezirke
-      %table.table
+      %table.table.table-hover.table-striped#municipalityTable
         %thead
           %tr
             %th(data-sort="string") Wahlbezirk

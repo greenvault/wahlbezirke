@@ -1,24 +1,18 @@
-# README
+# WAHLBEZIRKE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Diese Anwendung stellt die Wahlkreis-Analyse der Grünen dar.
+Die folgenden Features sind ausführlich im Trello-Board
+[greenvault/wahlbezirke](https://trello.com/b/xY9t6lKG/greenvault-wahlbezirke)
+dokumentiert.
 
-Things you may want to cover:
+## Implementiert
+- Modellierung der zu importierenden Daten
+- Frontend-Darstellung auf Gemeinde-Ebene
+- korrekte alphabetische Sortierung der Gemeindenamen
+- `tablesort` Library im Frontend
 
-* Ruby version
+## To-do
+- Suchfenster für Gemeindenamen mit Autocomplete-Funktion
+- Liste zur Auswahl einzelner Bundesländer
+- Liste zur Auswahl einzelner Wahlbezirke
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

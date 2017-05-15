@@ -1,0 +1,23 @@
+.row
+  .col-sm-12
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        = link_to 'Start', root_path
+      %li.breadcrumb-item.active
+        = @state.name
+.row
+  .col-sm-12
+    %h3
+      Wahlkreise in
+      = @state.name
+.row
+  .col-sm-12
+    %table.table.table-hover.table-striped.tablesorter
+      %thead
+        %tr
+          %th(data-sort="string") Wahlkreis
+      %tbody
+      - @districts.each do |d|
+        %tr
+          %td
+            = link_to d.district_id, district_path(d.district_id)

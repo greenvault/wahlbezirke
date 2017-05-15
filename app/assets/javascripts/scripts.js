@@ -1,4 +1,7 @@
 $(function(){
-  $("#municipalityTable").tablesorter();
-  console.log('Tablesorter activated!');
+  $(".tablesorter").tablesorter();
+  $("tr[data-link]").click(function() {
+    window.location = $(this).data("link")
+  });
+  console.log('Scripts loaded.');
 });

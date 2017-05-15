@@ -1,22 +1,38 @@
 .row
   .col-sm-12
-    - if @precincts.any?
-      %h3 Wahlbezirke
-      %table.table.table-hover.table-striped#municipalityTable
-        %thead
-          %tr
-            %th(data-sort="string") Wahlbezirk
-            %th(data-sort="float") Targeting-Score im Wkr
-            %th(data-sort="int") Targeting-Rang im Wkr
-            %th(data-sort="int") Targeting-Rang in Gemeinde
-        %tbody
-        - @precincts.each do |p|
-          %tr
-            %td
-              = p.precinct_id
-            %td
-              = p.district_score
-            %td
-              = p.district_rank
-            %td
-              = p.municipality_rank
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        = link_to 'Start', root_path
+      %li.breadcrumb-item
+        = link_to @municipality.state.name, state_path(@municipality.state)
+      %li.breadcrumb-item.active
+        = link_to "Wahlkreis #{@municipality.district_id}", district_path(@municipality.district_id)
+      %li.breadcrumb-item
+        Gemeinde
+        = @municipality.name
+.row
+  .col-sm-12
+    %h3
+      Wahlbezirke in
+      = @municipality.name
+      = " (#{@municipality.municipality_id})"
+.row
+  .col-sm-12
+    %table.table.table-hover.table-striped.tablesorter
+      %thead
+        %tr
+          %th(data-sort="string") Wahlbezirk
+          %th(data-sort="float") Targeting-Score im Wkr
+          %th(data-sort="int") Targeting-Rang im Wkr
+          %th(data-sort="int") Targeting-Rang in Gemeinde
+      %tbody
+      - @precincts.each do |p|
+        %tr
+          %td
+            = p.precinct_id
+          %td
+            = p.district_score
+          %td
+            = p.district_rank
+          %td
+            = p.municipality_rank

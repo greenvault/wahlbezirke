@@ -4,7 +4,7 @@ class DistrictsController < ApplicationController
   end
 
   def show
-    @district = District.find(params[:id])
+    @district = District.find_by(district_id: params[:id])
     @municipalities = Municipality.where(district: @district).
       sort_alphabetical_by(&:name)
   end

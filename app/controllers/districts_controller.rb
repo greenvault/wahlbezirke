@@ -4,7 +4,7 @@ class DistrictsController < ApplicationController
   end
 
   def show
-    @district = District.find_by(district_id: params[:id])
+    @district = District.find_by(district_identifier: params[:id])
     @municipalities = Municipality.where(district: @district).
       sort_alphabetical_by(&:name)
   end
@@ -26,6 +26,6 @@ class DistrictsController < ApplicationController
   private
 
   def district_params
-    params.require(:district).permit(:district_id, :state_id)
+    params.require(:district).permit(:district_identifier, :state_id)
   end
 end

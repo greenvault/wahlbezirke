@@ -19,11 +19,13 @@ class MunicipalitiesController < ApplicationController
   private
 
   def municipality_params
-    params.require(:municipality).permit(:name, :municipality_id, :district_id)
+    params.require(:municipality).
+      permit(:name, :municipality_identifier, :district_id)
   end
 
   def find_or_redirect
-    unless @municipality = Municipality.find_by(municipality_id: params[:id])
+    unless @municipality = Municipality.
+        find_by(municipality_identifier: params[:id])
       redirect_to :root
     end
   end

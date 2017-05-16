@@ -10,7 +10,7 @@ class PrecinctsController < ApplicationController
   private
 
   def precinct_params
-    params.require(:precinct).permit(:precinct_id, :district_score,
+    params.require(:precinct).permit(:precinct_identifier, :district_score,
                                      :district_rank, :municipality_rank,
                                      :district_id)
   end

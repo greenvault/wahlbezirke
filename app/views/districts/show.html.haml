@@ -7,12 +7,12 @@
         = link_to @district.state.name, state_path(@district.state)
       %li.breadcrumb-item
         Wahlkreis
-        = @district.district_id
+        = @district.district_identifier
 .row
   .col-sm-12
     %h3
       Gemeinden im Wahlkreis
-      = @district.district_id
+      = @district.district_identifier
 
 .row
   .col-sm-12
@@ -23,8 +23,9 @@
           %th(data-sort="integer") Gemeinde-ID
       %tbody
       - @municipalities.each do |m|
-        %tr(data-link="#{municipality_path(m.municipality_id)}")
+        %tr(data-link="#{municipality_path(m.municipality_identifier)}")
           %td
-            = link_to m.name, municipality_path(m.municipality_id)
+            = link_to m.name, municipality_path(m.municipality_identifier)
           %td
-            = link_to m.municipality_id, municipality_path(m.municipality_id)
+            = link_to m.municipality_id,
+              municipality_path(m.municipality_identifier)

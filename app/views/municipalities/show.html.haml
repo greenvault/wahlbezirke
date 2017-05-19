@@ -6,7 +6,8 @@
       %li.breadcrumb-item
         = link_to @municipality.state.name, state_path(@municipality.state)
       %li.breadcrumb-item.active
-        = link_to "Wahlkreis #{@municipality.district_identifier}", district_path(@municipality.district)
+        = link_to "Wahlkreis #{@municipality.district.district_identifier}",
+          district_path(@municipality.district.district_identifier)
       %li.breadcrumb-item
         Gemeinde
         = @municipality.name
@@ -31,7 +32,7 @@
           %td
             = p.precinct_identifier
           %td
-            = p.district_score
+            = display_score p.district_score
           %td
             = p.district_rank
           %td

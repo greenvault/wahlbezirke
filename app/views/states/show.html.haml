@@ -20,4 +20,5 @@
       - @districts.each do |d|
         %tr
           %td
-            = link_to d.district_identifier, district_path(d)
+            = link_to d.district_identifier,
+              district_path(d.district_identifier)

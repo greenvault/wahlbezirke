@@ -15,4 +15,9 @@ dokumentiert.
 - Suchfenster für Gemeindenamen mit Autocomplete-Funktion
 - Liste zur Auswahl einzelner Bundesländer
 - Liste zur Auswahl einzelner Wahlbezirke
+- auf Wahlkreisebene zwischen Gemeinde und Wahlbezirken switchen
+  (show all municipalities | show all precincts)
+- fix Turbolinks JavaScript loader
+- Wahlkreis 258 in Sachsen!
+- Wahlkreis 153 in BW! 153 ist leer! 152 ist '152/153'
 

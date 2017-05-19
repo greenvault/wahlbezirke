@@ -5,7 +5,8 @@ class StatesController < ApplicationController
 
   def show
     @state = State.find(params[:id])
-    @districts = District.where(state: @state).sort_by { |d| d.district_id.to_i }
+    @districts = District.where(state: @state).
+      sort_by { |d| d.district_identifier.to_i }
   end
 
 end

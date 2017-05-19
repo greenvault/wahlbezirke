@@ -13,7 +13,8 @@ class MunicipalitiesController < ApplicationController
 
   def show
     find_or_redirect
-    @precincts = Precinct.where(municipality: @municipality)
+    @precincts = Precinct.where(municipality: @municipality).
+      sort_by { |p| p.district_rank }
   end
 
   private

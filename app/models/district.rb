@@ -1,4 +1,4 @@
 class District < ApplicationRecord
   belongs_to :state
-  default_scope { order(district_id: :asc) }
+  default_scope { order(district_identifier: :asc) }
 end

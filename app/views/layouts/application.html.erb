@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Wahlbezirkinformer</title>
+    <title>
+      <%= if content_for?(:title) then yield(:title) + ' | ' end %>
+      PotentialGrün
+    </title>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +12,7 @@
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
     <div class='container'>
       <%= yield %>
     </div>

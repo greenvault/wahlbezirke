@@ -1,1 +1,12 @@
-Much states. So wow!
+.row
+  .col-sm-12
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        = link_to 'Start', root_path
+      %li.breadcrumb-item.active
+        Bundesländer
+.row
+  .col-sm-12
+    - @states.each do |s|
+      %p
+        = link_to s.name, state_path(s)

@@ -12,18 +12,21 @@ class MunicipalitiesController < ApplicationController
   end
 
   def show
-    find_or_error
-    @precincts = Precinct.where(municipality: @municipality)
+    find_or_redirect
+    @precincts = Precinct.where(municipality: @municipality).
+      sort_by { |p| p.district_rank }
   end
 
   private
 
   def municipality_params
-    params.require(:municipality).permit(:name, :municipality_id, :district_id)
+    params.require(:municipality).
+      permit(:name, :municipality_identifier, :district_id)
   end
 
-  def find_or_error
-    unless @municipality = Municipality.find_by(municipality_id: params[:id])
+  def find_or_redirect
+    unless @municipality = Municipality.
+        find_by(municipality_identifier: params[:id])
       redirect_to :root
     end
   end

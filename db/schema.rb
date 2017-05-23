@@ -13,35 +13,35 @@
 ActiveRecord::Schema.define(version: 20170509102124) do
 
   create_table "districts", force: :cascade do |t|
-    t.string   "district_id"
+    t.string   "district_identifier"
     t.integer  "state_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["district_id"], name: "index_districts_on_district_id", unique: true
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["district_identifier"], name: "index_districts_on_district_identifier", unique: true
     t.index ["state_id"], name: "index_districts_on_state_id"
   end
 
   create_table "municipalities", force: :cascade do |t|
     t.string   "name"
-    t.string   "municipality_id"
+    t.string   "municipality_identifier"
     t.integer  "district_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["district_id"], name: "index_municipalities_on_district_id"
-    t.index ["municipality_id"], name: "index_municipalities_on_municipality_id", unique: true
+    t.index ["municipality_identifier"], name: "index_municipalities_on_municipality_identifier", unique: true
     t.index ["name"], name: "index_municipalities_on_name"
   end
 
   create_table "precincts", force: :cascade do |t|
-    t.string   "precinct_id"
+    t.string   "precinct_identifier"
     t.decimal  "district_score"
     t.integer  "district_rank"
     t.integer  "municipality_rank"
     t.integer  "municipality_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.index ["municipality_id"], name: "index_precincts_on_municipality_id"
-    t.index ["precinct_id"], name: "index_precincts_on_precinct_id"
+    t.index ["precinct_identifier"], name: "index_precincts_on_precinct_identifier"
   end
 
   create_table "states", force: :cascade do |t|

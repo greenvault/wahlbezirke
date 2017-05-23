@@ -1,16 +1,31 @@
 .row
   .col-sm-12
-    - if @municipalities.any?
-      %h3 Gemeinden
-      %table.table
-        %thead
-          %tr
-            %th Name
-            %th Gemeinde-ID
-        %tbody
-        - @municipalities.each do |m|
-          %tr
-            %td
-              = m.name
-            %td
-              = m.municipality_id
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        = link_to 'Start', root_path
+      %li.breadcrumb-item.active
+        = link_to @district.state.name, state_path(@district.state)
+      %li.breadcrumb-item
+        Wahlkreis
+        = @district.district_identifier
+.row
+  .col-sm-12
+    %h3
+      Gemeinden im Wahlkreis
+      = @district.district_identifier
+
+.row
+  .col-sm-12
+    %table.table.table-hover.table-striped.tablesorter
+      %thead
+        %tr
+          %th(data-sort="string") Name
+          %th(data-sort="integer") Gemeinde-ID
+      %tbody
+      - @municipalities.each do |m|
+        %tr(data-link="#{municipality_path(m.municipality_identifier)}")
+          %td
+            = link_to m.name, municipality_path(m.municipality_identifier)
+          %td
+            = link_to m.municipality_identifier,
+              municipality_path(m.municipality_identifier)

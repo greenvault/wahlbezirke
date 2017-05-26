@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'Arvo Regular';
+  font-style: normal;
+  font-weight: 400;
+  src:  local('Arvo Regular'),
+        font-url('arvo_regular.eot?#iefix') format('embedded-opentype'),
+        font-url('arvo_regular.woff') format('woff'),
+        font-url('arvo_regular.ttf') format('truetype'),
+        font-url('arvo_regular.svg?#ArvoRegular') format('svg');
+}
+
+@font-face {
+  font-family: 'Arvo Gruen';
+  font-style: normal;
+  font-weight: normal;
+  src:  local('Arvo Gruen'),
+        font-url('arvo_gruen.eot?#iefix') format('embedded-opentype'),
+        font-url('arvo_gruen.woff') format('woff'),
+        font-url('arvo_gruen.ttf') format('truetype'),
+        font-url('arvo_gruen.svg?#ArvoGruen') format('svg');
+}
+
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src:  local('PT Sans'),
+        font-url('ptsans_regular.eot?#iefix') format('embedded-opentype'),
+        font-url('ptsans_regular.woff') format('woff'),
+        font-url('ptsans_regular.ttf') format('truetype'),
+        font-url('ptsans_regular.svg?#PTSans') format('svg');
+}
+
+@font-face {
+  font-family: 'PT Sans Bold';
+  font-style: normal;
+  font-weight: 700;
+  src:  local('PT Sans Bold'),
+        font-url('ptsans_bold.eot?#iefix') format('embedded-opentype'),
+        font-url('ptsans_bold.woff') format('woff'),
+        font-url('ptsans_bold.ttf') format('truetype'),
+        font-url('ptsans_bold.svg?#PTSansBold') format('svg');
+}

@@ -11,14 +11,8 @@
       Wahlkreise in
       = @state.name
 .row
-  .col-sm-12
-    %table.table.table-hover.table-striped.tablesorter
-      %thead
-        %tr
-          %th(data-sort="string") Wahlkreis
-      %tbody
-      - @districts.each do |d|
-        %tr
-          %td
-            = link_to d.district_identifier,
-              district_path(d.district_identifier)
+  - @districts.each do |d|
+    .col-sm-2
+      = link_to district_path(d.district_identifier) do
+        .district-cell
+          = d.district_identifier

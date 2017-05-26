@@ -22,10 +22,18 @@
     %table.table.table-hover.table-striped.tablesorter
       %thead
         %tr
-          %th(data-sort="string") Wahlbezirk
-          %th(data-sort="float") Targeting-Score im Wahlkreis
-          %th(data-sort="int") Targeting-Rang im Wahlkreis
-          %th(data-sort="int") Targeting-Rang in Gemeinde
+          %th(data-sort="string")
+            %span
+            Wahlbezirk
+          %th(data-sort="float")
+            %span
+            Targeting-Score im Wahlkreis
+          %th(data-sort="int")
+            %span
+            Targeting-Rang im Wahlkreis
+          %th(data-sort="int")
+            %span
+            Targeting-Rang in Gemeinde
       %tbody
       - @precincts.each do |p|
         %tr

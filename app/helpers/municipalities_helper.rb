@@ -1,6 +1,6 @@
 module MunicipalitiesHelper
 
   def display_score score
-    score.class == BigDecimal ?  score.round(2).to_f : score
+    number_with_precision(score, precision: 2)
   end
 end

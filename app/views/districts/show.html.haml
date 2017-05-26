@@ -19,8 +19,12 @@
     %table.table.table-hover.table-striped.tablesorter
       %thead
         %tr
-          %th(data-sort="string") Name
-          %th(data-sort="integer") Gemeinde-ID
+          %th(data-sort="string")
+            %span
+            Name
+          %th(data-sort="integer")
+            %span
+            Gemeinde-ID
       %tbody
       - @municipalities.each do |m|
         %tr(data-link="#{municipality_path(m.municipality_identifier)}")

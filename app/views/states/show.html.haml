@@ -16,3 +16,5 @@
       = link_to district_path(d.district_identifier) do
         .district-cell
           = d.district_identifier
+          .district-info
+            = pluralize(d.municipalities.count, 'Gemeinde', 'Gemeinden')

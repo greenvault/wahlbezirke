@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509102124) do
+ActiveRecord::Schema.define(version: 20170606191816) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "district_identifier"
     t.integer  "state_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.string   "name"
     t.index ["district_identifier"], name: "index_districts_on_district_identifier", unique: true
     t.index ["state_id"], name: "index_districts_on_state_id"
   end
@@ -40,6 +41,8 @@ ActiveRecord::Schema.define(version: 20170509102124) do
     t.integer  "municipality_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "district_id"
+    t.index ["district_id"], name: "index_precincts_on_district_id"
     t.index ["municipality_id"], name: "index_precincts_on_municipality_id"
     t.index ["precinct_identifier"], name: "index_precincts_on_precinct_identifier"
   end

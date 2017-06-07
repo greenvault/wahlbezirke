@@ -11,8 +11,12 @@
 .row
   .col-sm-12
     %h3
-      Gemeinden im Wahlkreis
+      Wahlbezirke im Wahlkreis
       = @district.district_identifier
+      = @district.name
+    %h3
+      - if @check
+        = @check
 
 .row
   .col-sm-12
@@ -21,15 +25,29 @@
         %tr
           %th(data-sort="string")
             %span
-            Name
-          %th(data-sort="integer")
+            Gemeinde
+          %th(data-sort="string")
             %span
-            Gemeinde-ID
+            Wahlbezirk
+          %th(data-sort="float")
+            %span
+            Targeting-Score (WK)
+          %th(data-sort="int")
+            %span
+            Targeting-Rang (WK)
+          %th(data-sort="int")
+            %span
+            Targeting-Rang (Gemeinde)
       %tbody
-      - @municipalities.each do |m|
-        %tr(data-link="#{municipality_path(m.municipality_identifier)}")
+      - @precincts.each do |p|
+        %tr
           %td
-            = link_to m.name, municipality_path(m.municipality_identifier)
+            = p.municipality.name
           %td
-            = link_to m.municipality_identifier,
-              municipality_path(m.municipality_identifier)
+            = p.precinct_identifier
+          %td
+            = display_score p.district_score
+          %td
+            = p.district_rank
+          %td
+            = p.municipality_rank

@@ -17,4 +17,7 @@
         .district-cell
           = d.district_identifier
           .district-info
-            = pluralize(d.municipalities.count, 'Gemeinde', 'Gemeinden')
+            .item
+              = pluralize(d.municipalities.count, 'Gemeinde', 'Gemeinden')
+            .item
+              = pluralize(d.precincts.count, 'Wahlbezirk', 'Wahlbezirke')

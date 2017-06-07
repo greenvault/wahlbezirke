@@ -5,8 +5,14 @@ class DistrictsController < ApplicationController
 
   def show
     @district = District.find_by(district_identifier: params[:id])
-    @municipalities = Municipality.where(district: @district).
-      sort_alphabetical_by(&:name)
+    if params['gemeinde'] == '1'
+      @municipalities = Municipality.where(district: @district).
+        sort_alphabetical_by(&:name)
+      render 'show_municipality'
+    else
+      @precincts = Precinct.where(district: @district).
+        sort_by { |p| p.district_rank }
+    end
   end
 
   def new

@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'redcarpet', '~> 3.4.0'
 gem 'emd', '~> 0.1.0'
+gem 'ransack', '~> 1.8', '>= 1.8.2'
 
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'

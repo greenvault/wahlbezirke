@@ -13,3 +13,15 @@
     </div>
   </div>
 </nav>
+
+<% flash.each do |key, value| %>
+  <div class="container flash-box <%= key %> fade-in">
+    <div class="row">
+      <div class="col-sm-12">
+        <a href='#' class='dismiss'>
+          <%= value %>
+        </a>
+      </div>
+    </div>
+  </div>
+<% end %>

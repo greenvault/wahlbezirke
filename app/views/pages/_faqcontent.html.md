@@ -22,4 +22,4 @@ Nach der ersten Sortierung kann zusätzlich eine zweite Spalte als Sortierkriter
 
 Entwicklung: [Jonas Knipper](https://jonasknipper.de), Berlin
 
-[Code im GreenVault auf Git](https://github.com/greenvault/wahlbezirke)
+[Code im GreenVault auf GitHub](https://github.com/greenvault/wahlbezirke)

@@ -9,3 +9,17 @@ Das Potential ist eine Bewertung der Wahlbezirke zwischen 0 (kein Potential) bis
 
 ## 4) Wie wird das Potential berechnet?
 Wir berechnen das Potential auf Grundlage des Bundestagswahlergebnisses 2013 für jeden Wahlkreis. Somit gibt es in jedem Wahlkreis von 2013 einmal 100 und einmal 1. Das Potential sehen wir dort am größten, wo bei relativ starkem grünen Zweitstimmenergebnis die Wahlbeteiligung relativ niedrig war.
+
+## 5) Welche Filtermöglichkeiten gibt es?
+Per Klick auf das kleine Dreieck-Symbol im Tabellenkopf kann die
+Sortierung der Wahlbezirke geändert werden; das Dreieck zeigt dabei die
+Sortier-Richtung (aufsteigend/absteigend) an.
+
+Nach der ersten Sortierung kann zusätzlich eine zweite Spalte als Sortierkriterium ausgewählt werden (Beispiel: Sortierung nach Gemeindenamen, dann zusätzlich nach Targeting-Rang). Dazu die zweite Sortierspalte mit gedrückter Shift-Taste anklicken. Sollte die Sortierung nicht mehr erfolgen, setzt ein Neuladen der Seite die Tabelle wieder auf die ursprüngliche Darstellung zurück.
+
+
+---
+
+Entwicklung: [Jonas Knipper](https://jonasknipper.de), Berlin
+
+[Code im GreenVault auf GitHub](https://github.com/greenvault/wahlbezirke)

@@ -10,24 +10,56 @@
   font-size: 1.4rem
   letter-spacing: 1px
 
-.flash-box
+li.nav-item
+  margin-left: 1rem
+
+.navbar-inverse .navbar-nav .nav-link
+  color: rgba($navlinkColor, 0.8)
+
+  &:hover
+    color: rgba($navlinkColor, 1)
+
+a#loginLink
+  color: rgba($infoColor, 0.8)
+  border-radius: 0.2rem
+  padding: 6px 26px
+  border: 2px solid rgba($infoColor, 0.8)
+  -webkit-transform: perspective(1px) translateZ(0)
+  transform: perspective(1px) translateZ(0)
+  box-shadow: 0 0 1px transparent
+  overflow: hidden
+  -webkit-transition-duration: 0.3s
+  transition-duration: 0.3s
+  -webkit-transition-property: color, background-color, border-color
+  transition-property: color, background-color, border-color
+
+  &:hover
+    color: rgba($navlinkColor, 1)
+    border-color: rgba($navlinkColor, 1)
+    background: rgba($infoColor, 0.6)
+
+#flashBox
   position: absolute
   top: 0
   width: 100%
   height: 4rem
   z-index: 500
+  padding: 1rem 0
+
+.message
   line-height: 2.1rem
   text-align: center
   font-size: 1.25rem
-  padding: 1rem 0
   font-weight: 700
-  text-transform: uppercase
+  color: $flashboxText
 
-  a
-    color: $flashboxText
+a#dismisser
+  color: $flashboxText
+  text-decoration: none
+  margin-left: 3rem
 
-    &:hover
-      color: $flashboxText
+  &:hover
+    text-decoration: none
 
 .warning
   background: $warning

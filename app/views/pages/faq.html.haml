@@ -1,4 +1,10 @@
-.col-sm-10
-  %h1 Häufige Fragen / Frequently asked questions (FAQ)
+.row
+  .col-sm-10
+    User signed in:
+    = user_signed_in?
+    = fa_icon 'times-circle'
+.row
+  .col-sm-10
+    %h1 Häufige Fragen / Frequently asked questions (FAQ)
 
-  = render 'faqcontent'
+    = render 'faqcontent'

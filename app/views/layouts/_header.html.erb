@@ -9,18 +9,22 @@
         <li class="nav-item">
           <a class="nav-link" href="/faq">FAQ / Anleitung</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" id='loginLink' href="/users/saml/sign_in">Login</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
 <% flash.each do |key, value| %>
-  <div class="container flash-box <%= key %> fade-in">
+  <div class="container <%= key %>" id="flashBox">
     <div class="row">
       <div class="col-sm-12">
-        <a href='#' class='dismiss'>
+        <div class='message'>
           <%= value %>
-        </a>
+          <a href='#' id='dismisser'><%= fa_icon 'times' %></a>
+        </div>
       </div>
     </div>
   </div>

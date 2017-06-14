@@ -258,10 +258,10 @@ Devise.setup do |config|
   config.saml_use_subject = true
   config.idp_settings_adapter = nil
   config.saml_configure do |settings|
-    settings.assertion_consumer_service_url     = "http://lvh.me:3000/users/saml/auth"
+    settings.assertion_consumer_service_url     = "#{$callback}/users/saml/auth"
     settings.assertion_consumer_service_binding = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
     settings.name_identifier_format             = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
-    settings.issuer                             = "http://lvh.me:3000/users/saml/metadata"
+    settings.issuer                             = "#{$callback}/users/saml/metadata"
     settings.authn_context                      = ""
     settings.idp_slo_target_url                 = ""
     settings.idp_sso_target_url                 = "https://dev-120491.oktapreview.com/app/acmeincdev120491_wahlbezirke_1/exkarwow4jDHM740S0h7/sso/saml"

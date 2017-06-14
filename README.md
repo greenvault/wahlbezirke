@@ -17,3 +17,8 @@ dokumentiert.
   (show all municipalities | show all precincts)
 - Login via netz.gruene.de per SAML
 
+
+## License
+Wahlbezirke is released under the [MIT
+License](https://opensource.org/licenses/MIT)
+

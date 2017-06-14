@@ -2,7 +2,7 @@
   .col-sm-12
     %ol.breadcrumb
       %li.breadcrumb-item
-        = link_to 'Start', root_path
+        = link_to 'Start', states_path
       %li.breadcrumb-item.active
         = link_to @district.state.name, state_path(@district.state)
       %li.breadcrumb-item

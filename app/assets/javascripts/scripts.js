@@ -4,13 +4,22 @@ var tablesort = function() {
 
 var flashfade = function() {
   $("#flashBox").click(function() {
-    $(this).fadeOut(300, function() {
+    $(this).fadeOut(500, function() {
       $(this).hide();
-      console.log('Hidden.');
     });
   });
 };
 
+var flashhide = function() {
+  setTimeout(function() {
+    $('#flashBox').fadeOut(500, function() {
+      $(this).hide();
+    });
+  }, 3500);
+};
+
+
 $(document).on('turbolinks:load', flashfade);
+$(document).on('turbolinks:load', flashhide);
 $(document).on('turbolinks:load', tablesort);
 

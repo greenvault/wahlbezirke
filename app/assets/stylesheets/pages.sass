@@ -7,24 +7,30 @@
   vertical-align: middle
 
 a.switcher
-  border:         3px solid transparent
-  border-color:   $switcherBorder
-  border-radius:  .25rem
-  padding:        .5rem 1rem
-  text-align:     center
-  white-space:    nowrap
-  color:          rgba($dark, 0.5)
+  border:           3px solid transparent
+  border-color:     $switcherBorder
+  border-radius:    .2rem
+  padding:          .5rem 1rem
+  text-align:       center
+  white-space:      nowrap
+  color:            rgba($dark, 0.5)
+  text-decoration:  none
+  margin-right:     -6px
+
+  &:last-child
+    margin-right:   10px
+
+a.passiveSwitcher
+  +animation(0.3s)
 
   &:hover
     box-shadow:   0 0 5px rgba($dark, 0.3)
     color:        $activeSwitcherDark
     border-color: $activeSwitcherDark
 
-  &:last-child
-    margin-right:   10px
-
 a.activeSwitcher
   border-color:   $activeSwitcherDark
   background:     $activeSwitcherDark
   color:          $activeSwitcherBright
   box-shadow:     0 0 3px rgba($dark, 0.3)
+  cursor:         default

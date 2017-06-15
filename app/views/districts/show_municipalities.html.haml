@@ -10,8 +10,10 @@
         = @district.district_identifier
 .row
   .col-sm-12
-    %h3
-      Gemeinden im Wahlkreis
+    .heading
+      = link_to 'Wahlbezirke', district_path(@district), class: 'switcher passiveSwitcher'
+      = link_to 'Gemeinden', district_path(@district, gemeinde: '1'), class: 'switcher activeSwitcher'
+      im Wahlkreis
       = @district.district_identifier
       = @district.name
 
@@ -26,6 +28,7 @@
           %th(data-sort="integer")
             %span
             Gemeinde-ID
+          %th.municipalityFiller
       %tbody
       - @municipalities.each do |m|
         %tr(data-link="#{municipality_path(m.municipality_identifier)}")
@@ -34,3 +37,4 @@
           %td
             = link_to m.municipality_identifier,
               municipality_path(m.municipality_identifier)
+          %td.municipalityFiller

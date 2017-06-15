@@ -11,47 +11,44 @@
 .row
   .col-sm-12
     .heading
-      %a.switcher.activeSwitcher(href='#')
-        Wahlbezirke
-      %a.switcher(href='#')
-        Gemeinden
+      = link_to 'Wahlbezirke', district_path(@district), class: 'switcher activeSwitcher'
+      = link_to 'Gemeinden', district_path(@district, gemeinde: '1'), class: 'switcher passiveSwitcher'
       im Wahlkreis
       = @district.district_identifier
       = @district.name
-    %h3
-      - if @check
-        = @check
 
 .row
   .col-sm-12
     %table.table.table-hover.table-striped.tablesorter
       %thead
         %tr
-          %th(data-sort="string")
+          %th.title(data-sort="string")
             %span
             Gemeinde
-          %th(data-sort="string")
+          %th.data.number(data-sort="string")
             %span
             Wahlbezirk
-          %th(data-sort="float")
+          %th.data.number(data-sort="float")
             %span
-            Targeting-Score (WK)
-          %th(data-sort="int")
+            Score (WK)
+          %th.data.number(data-sort="int")
             %span
-            Targeting-Rang (WK)
-          %th(data-sort="int")
+            Rang (WK)
+          %th.data.number(data-sort="int")
             %span
-            Targeting-Rang (Gemeinde)
+            Rang (Gemeinde)
+          %th.filler
       %tbody
       - @precincts.each do |p|
         %tr
           %td
-            = p.municipality.name
-          %td
+            = link_to p.municipality.name, municipality_path(p.municipality.municipality_identifier)
+          %td.data.number
             = p.precinct_identifier
-          %td
+          %td.data.number
             = display_score p.district_score
-          %td
+          %td.data.number
             = p.district_rank
-          %td
+          %td.data.number
             = p.municipality_rank
+          %td.filler

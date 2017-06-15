@@ -7,7 +7,7 @@
         = link_to @municipality.state.name, state_path(@municipality.state)
       %li.breadcrumb-item.active
         = link_to "Wahlkreis #{@municipality.district.district_identifier}",
-          district_path(@municipality.district.district_identifier)
+          district_path(@municipality.district.district_identifier, gemeinde: '1')
       %li.breadcrumb-item
         Gemeinde
         = @municipality.name

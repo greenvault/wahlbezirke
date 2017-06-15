@@ -7,6 +7,10 @@
 # Ignore bundler config.
 /.bundle
 /vendor
+
+# Ignore local files
+*.pem
+*.crt
 .DS_Store
 
 # Ignore the default SQLite database.

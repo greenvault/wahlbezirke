@@ -17,3 +17,5 @@ dokumentiert.
   (show all municipalities | show all precincts)
 - Login via netz.gruene.de per SAML
 
+## License
+Released under the [MIT License](http://www.opensource.org/licenses/MIT)

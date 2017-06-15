@@ -258,15 +258,18 @@ Devise.setup do |config|
   config.saml_use_subject = true
   config.idp_settings_adapter = nil
   config.saml_configure do |settings|
+    idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
+    # Returns OneLogin::RubySaml::Settings prepopulated with idp metadata
+    remote_data                                 = idp_metadata_parser.parse_remote("https://netz.gruene.de/saml2/idp/metadata.php")
     settings.assertion_consumer_service_url     = "http://lvh.me:3000/users/saml/auth"
-    settings.assertion_consumer_service_binding = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
-    settings.name_identifier_format             = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
     settings.issuer                             = "http://lvh.me:3000/users/saml/metadata"
+    settings.name_identifier_format             = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
+    settings.assertion_consumer_service_binding = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
     settings.authn_context                      = ""
     settings.idp_slo_target_url                 = ""
-    settings.idp_sso_target_url                 = "https://dev-120491.oktapreview.com/app/acmeincdev120491_wahlbezirke_1/exkarwow4jDHM740S0h7/sso/saml"
-    settings.idp_cert_fingerprint               = '12:E2:97:30:B3:C8:01:27:C5:75:AC:E2:EA:A2:7D:D8:02:55:08:55:59:EA:B0:1E:76:C6:12:50:84:5E:7E:F4'
-    settings.idp_cert_fingerprint_algorithm     = 'http://www.w3.org/2000/09/xmldsig#sha256'
+    settings.idp_sso_target_url                 = remote_data.idp_sso_target_url
+    settings.idp_cert_fingerprint               = remote_data.idp_cert_fingerprint
+    settings.idp_cert_fingerprint_algorithm     = remote_data.idp_cert_fingerprint_algorithm
   end
 
   # ==> Warden configuration

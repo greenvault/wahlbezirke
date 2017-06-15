@@ -1,0 +1,30 @@
+.heading
+  margin:         0.8rem 0 1rem
+  margin-bottom:  1.2rem
+  font-family:    "Arvo Regular", "Helvetica Neue", Arial
+  font-size:      1.75rem
+  line-height:    3rem
+  vertical-align: middle
+
+a.switcher
+  border:         3px solid transparent
+  border-color:   $switcherBorder
+  border-radius:  .25rem
+  padding:        .5rem 1rem
+  text-align:     center
+  white-space:    nowrap
+  color:          rgba($dark, 0.5)
+
+  &:hover
+    box-shadow:   0 0 5px rgba($dark, 0.3)
+    color:        $activeSwitcherDark
+    border-color: $activeSwitcherDark
+
+  &:last-child
+    margin-right:   10px
+
+a.activeSwitcher
+  border-color:   $activeSwitcherDark
+  background:     $activeSwitcherDark
+  color:          $activeSwitcherBright
+  box-shadow:     0 0 3px rgba($dark, 0.3)

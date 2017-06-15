@@ -10,8 +10,12 @@
         = @district.district_identifier
 .row
   .col-sm-12
-    %h3
-      Wahlbezirke im Wahlkreis
+    .heading
+      %a.switcher.activeSwitcher(href='#')
+        Wahlbezirke
+      %a.switcher(href='#')
+        Gemeinden
+      im Wahlkreis
       = @district.district_identifier
       = @district.name
     %h3

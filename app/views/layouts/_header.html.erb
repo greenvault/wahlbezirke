@@ -5,10 +5,10 @@
       <span class='logo-text'>PotentialGrün</span>
     </a>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <form class="form-inline searchModule">
-        <input class="form-control mr-sm-2" type="text" placeholder="Gemeinde, WK, ..." id="searchField">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Suchen</button>
-      </form>
+      <%= form_tag('/search', method: :get, html: { class: 'form-inline searchModule' } ) do %>,
+        <%= text_field_tag(:q, placeholder: 'WK, Gemeinde, ...', data: { behavior: 'autocomplete' }, class: 'form-control mr-sm-2', type: 'text') %>
+        <%= submit_tag('Suchen', class: 'btn btn-outline-success my-2 my-sm-0', type: 'submit') %>
+      <% end %>
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="/faq">FAQ / Anleitung</a>

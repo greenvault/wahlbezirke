@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'faq', to: 'pages#faq'
+  get 'search', controller: :main
 
   resources :states
   resources :districts

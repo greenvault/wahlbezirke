@@ -268,8 +268,9 @@ Devise.setup do |config|
     settings.authn_context                      = ""
     settings.idp_slo_target_url                 = ""
     settings.idp_sso_target_url                 = remote_data.idp_sso_target_url
-    settings.idp_cert_fingerprint               = remote_data.idp_cert_fingerprint
-    settings.idp_cert_fingerprint_algorithm     = remote_data.idp_cert_fingerprint_algorithm
+    settings.idp_cert                           = remote_data.idp_cert
+    settings.certificate                        = ENV['saml_certificate']
+    settings.private_key                        = ENV['saml_private_key']
   end
 
   # ==> Warden configuration

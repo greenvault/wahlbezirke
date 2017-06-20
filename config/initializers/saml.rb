@@ -1,1 +1,1 @@
-$callback = Rails.env.development? ? 'http://lvh.me:3000' : ENV['CALLBACK_ADDRESS']
+$callback = Rails.env.development? ? 'http://lvh.me:3000' : ENV['APPLICATION_URL']

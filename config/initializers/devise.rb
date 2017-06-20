@@ -261,8 +261,8 @@ Devise.setup do |config|
     idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
     # Returns OneLogin::RubySaml::Settings prepopulated with idp metadata
     remote_data                                 = idp_metadata_parser.parse_remote("https://netz.gruene.de/saml2/idp/metadata.php")
-    settings.assertion_consumer_service_url     = "http://lvh.me:3000/users/saml/auth"
-    settings.issuer                             = "http://lvh.me:3000/users/saml/metadata"
+    settings.assertion_consumer_service_url     = "#{ENV['APPLICATION_URL']}/users/saml/auth"
+    settings.issuer                             = "#{ENV['APPLICATION_URL']}/users/saml/metadata"
     settings.name_identifier_format             = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
     settings.assertion_consumer_service_binding = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
     settings.authn_context                      = ""

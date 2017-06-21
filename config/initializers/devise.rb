@@ -261,6 +261,8 @@ Devise.setup do |config|
     idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
     # Returns OneLogin::RubySaml::Settings prepopulated with idp metadata
     remote_data                                   = idp_metadata_parser.parse_remote("https://netz.gruene.de/saml2/idp/metadata.php")
+    settings.certificate                          = ENV['saml_certificate']
+    settings.private_key                          = ENV['saml_private_key']
     settings.assertion_consumer_service_url       = "#{ENV['APPLICATION_URL']}/users/saml/auth"
     settings.issuer                               = "#{ENV['APPLICATION_URL']}/users/saml/metadata"
     settings.name_identifier_format               = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
@@ -279,8 +281,6 @@ Devise.setup do |config|
     settings.security[:signature_method]          = XMLSecurity::Document::RSA_SHA1
     settings.idp_sso_target_url                   = remote_data.idp_sso_target_url
     settings.idp_cert                             = remote_data.idp_cert
-    settings.certificate                          = ENV['saml_certificate']
-    settings.private_key                          = ENV['saml_private_key']
   end
 
   # ==> Warden configuration

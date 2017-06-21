@@ -275,8 +275,8 @@ Devise.setup do |config|
     settings.security[:embed_sign]                = false
     settings.security[:logout_requests_signed]    = true
     settings.security[:logout_responses_signed]   = true
-    settings.security[:digest_method]             = XMLSecurity::Document::SHA512
-    settings.security[:signature_method]          = XMLSecurity::Document::RSA_SHA512
+    settings.security[:digest_method]             = XMLSecurity::Document::SHA1
+    settings.security[:signature_method]          = XMLSecurity::Document::RSA_SHA1
     settings.idp_sso_target_url                   = remote_data.idp_sso_target_url
     settings.idp_cert                             = remote_data.idp_cert
     settings.certificate                          = ENV['saml_certificate']

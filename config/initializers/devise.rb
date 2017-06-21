@@ -260,19 +260,27 @@ Devise.setup do |config|
   config.saml_configure do |settings|
     idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
     # Returns OneLogin::RubySaml::Settings prepopulated with idp metadata
-    remote_data                                 = idp_metadata_parser.parse_remote("https://netz.gruene.de/saml2/idp/metadata.php")
-    settings.assertion_consumer_service_url     = "#{ENV['APPLICATION_URL']}/users/saml/auth"
-    settings.issuer                             = "#{ENV['APPLICATION_URL']}/users/saml/metadata"
-    settings.name_identifier_format             = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
-    settings.assertion_consumer_service_binding = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
-    settings.authn_context                      = ""
-    settings.idp_slo_target_url                 = ""
-    settings.security[:authn_requests_signed]   = true
-    settings.security[:want_assertions_signed]  = true
-    settings.idp_sso_target_url                 = remote_data.idp_sso_target_url
-    settings.idp_cert                           = remote_data.idp_cert
-    settings.certificate                        = ENV['saml_certificate']
-    settings.private_key                        = ENV['saml_private_key']
+    remote_data                                   = idp_metadata_parser.parse_remote("https://netz.gruene.de/saml2/idp/metadata.php")
+    settings.assertion_consumer_service_url       = "#{ENV['APPLICATION_URL']}/users/saml/auth"
+    settings.issuer                               = "#{ENV['APPLICATION_URL']}/users/saml/metadata"
+    settings.name_identifier_format               = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
+    settings.assertion_consumer_service_binding   = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+    settings.authn_context                        = ""
+    settings.idp_slo_target_url                   = ""
+    settings.security[:authn_requests_signed]     = true
+    settings.security[:want_assertions_signed]    = true
+    settings.security[:want_assertions_encrypted] = true
+    settings.security[:want_name_id]              = true
+    settings.security[:metadata_signed]           = true
+    settings.security[:embed_sign]                = false
+    settings.security[:logout_requests_signed]    = true
+    settings.security[:logout_responses_signed]   = true
+    settings.security[:digest_method]             = XMLSecurity::Document::SHA512
+    settings.security[:signature_method]          = XMLSecurity::Document::RSA_SHA512
+    settings.idp_sso_target_url                   = remote_data.idp_sso_target_url
+    settings.idp_cert                             = remote_data.idp_cert
+    settings.certificate                          = ENV['saml_certificate']
+    settings.private_key                          = ENV['saml_private_key']
   end
 
   # ==> Warden configuration

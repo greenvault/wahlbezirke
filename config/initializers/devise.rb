@@ -267,6 +267,8 @@ Devise.setup do |config|
     settings.assertion_consumer_service_binding = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
     settings.authn_context                      = ""
     settings.idp_slo_target_url                 = ""
+    settings.security[:authn_requests_signed]   = true
+    settings.security[:want_assertions_signed]  = true
     settings.idp_sso_target_url                 = remote_data.idp_sso_target_url
     settings.idp_cert                           = remote_data.idp_cert
     settings.certificate                        = ENV['saml_certificate']

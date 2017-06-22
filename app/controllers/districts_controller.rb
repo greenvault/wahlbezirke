@@ -10,7 +10,7 @@ class DistrictsController < ApplicationController
     if params['gemeinde'] == '1'
       @municipalities = Municipality.where(district: @district).
         sort_alphabetical_by(&:name)
-      render 'show_municipality'
+      render 'show_municipalities'
     else
       @precincts = Precinct.where(district: @district).
         sort_by { |p| p.district_rank }

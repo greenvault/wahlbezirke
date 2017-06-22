@@ -1,4 +1,6 @@
 class DistrictsController < ApplicationController
+  before_action :authenticated_user?
+
   def index
     @districts = District.all
   end

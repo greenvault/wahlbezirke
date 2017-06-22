@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'pages#login'
+  root 'states#index'
   get 'faq', to: 'pages#faq'
   get 'login', to: 'pages#login'
   get 'municipalities', to: 'states#index'

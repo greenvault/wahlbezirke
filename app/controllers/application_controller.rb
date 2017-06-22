@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   private
     def authenticated_user?
       unless user_signed_in?
-        redirect_to root_path, notice: 'Anmeldung erforderlich'
+        redirect_to login_path, notice: 'Anmeldung erforderlich'
       end
     end
 end

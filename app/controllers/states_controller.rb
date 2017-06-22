@@ -1,4 +1,6 @@
 class StatesController < ApplicationController
+  before_action :authenticated_user?
+
   def index
     @states = State.all.order 'name ASC'
   end

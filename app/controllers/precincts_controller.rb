@@ -1,4 +1,6 @@
 class PrecinctsController < ApplicationController
+  before_action :authenticated_user?
+
   def new
     @precinct = Precinct.new
   end

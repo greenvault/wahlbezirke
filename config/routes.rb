@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'sessions' }
   root 'states#index'
   get 'faq', to: 'pages#faq'
   get 'login', to: 'pages#login'

@@ -1,1 +1,1 @@
-Figaro.require_keys('saml_certificate', 'SECRET_KEY_BASE')
+Figaro.require_keys('saml_certificate')

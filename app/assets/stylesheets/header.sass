@@ -15,3 +15,64 @@ button#searchSubmit
   background: $green
   padding-left: 3px
 
+#headerNavbar
+  height: 4rem
+  margin-bottom: 2rem
+
+.logo-text
+  font-family: 'Arvo Regular'
+  font-weight: 400
+  margin-left: 4px
+  text-transform: uppercase
+  font-size: 1.4rem
+  letter-spacing: 1px
+
+li.nav-item
+  margin-left: 1rem
+
+.navbar-inverse .navbar-nav .nav-link
+  color: rgba($navlinkColor, 0.8)
+
+  &:hover
+    color: rgba($navlinkColor, 1)
+
+a.navbar-brand > img
+  +animation(0.4s)
+
+a.navbar-brand
+  +animation(0.4s)
+
+  &:hover
+    text-shadow: 0px 0px 8px rgba($navlinkColor, 0.8)
+
+  &:hover > img
+    box-shadow: 0px 0px 8px rgba($navlinkColor,0.8)
+
+#flashBox
+  position: absolute
+  top: 0
+  width: 100%
+  height: 4rem
+  z-index: 500
+  padding: 1rem 0
+
+.message
+  line-height: 2.1rem
+  text-align: center
+  font-size: 1.25rem
+  font-weight: 700
+  color: $flashboxText
+
+span.pointer
+  color: $flashboxText
+  margin-left: 3rem
+  cursor: pointer
+
+.fb-warning
+  background: $warning
+
+.fb-notice
+  background-color: $notice
+
+.fb-success
+  background-color: $success

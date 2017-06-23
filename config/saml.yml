@@ -1,0 +1,28 @@
+development: &DEFAULT
+  idp_metadata_url: https://netz.gruene.de/saml2/idp/metadata.php
+  assertion_consumer_service_url: "<%= ENV['service_url'] %>/users/auth/saml/callback"
+  issuer: "<%= ENV['service_url'] %>/users/auth/saml/metadata"
+  certificate: "<%= ENV['saml_certificate'] %>"
+  private_key: "<%= ENV['saml_private_key'] %>"
+  security:
+    authn_requests_signed: true
+    logout_requests_signed: true
+    logout_responses_signed: true
+    want_assertions_signed: true
+    want_assertions_encrypted: true
+    want_name_id: true
+    metadata_signed: true
+    embed_sign: false
+    digest_method: <%= XMLSecurity::Document::SHA512 %>
+    signature_method: <%= XMLSecurity::Document::RSA_SHA512 %>
+  request_attributes: []
+  attribute_statements:
+    name:
+      - urn:oid:2.5.4.3
+    last_name:
+      - urn:oid:2.5.4.4
+    nickname:
+      - urn:oid:0.9.2342.19200300.100.1.1
+  uid_attribute: urn:oid:0.9.2342.19200300.100.1.1
+production:
+  <<: *DEFAULT

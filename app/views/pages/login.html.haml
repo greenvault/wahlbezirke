@@ -1,0 +1,12 @@
+.row
+  .col-sm-12.col-md-8
+    %h1 Anmeldung erforderlich
+    .loginBox
+      %a.loginButton.btn.btn-lg.btn-primary(href='/users/saml/sign_in' data-role='button')
+        Login mit netz.gruene.de
+.row
+  .col-sm-12.col-md-8
+    %p
+      Das Passwort kann unter
+      = link_to 'netz.gruene.de', 'https://netz.gruene.de'
+      zurückgesetzt werden. Falls du deine Anmeldedaten nicht (mehr) kennst, schreibe eine Mail an netz@gruene.de

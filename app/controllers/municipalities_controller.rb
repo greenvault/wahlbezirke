@@ -1,4 +1,6 @@
 class MunicipalitiesController < ApplicationController
+  before_action :authenticated_user?
+
   def index
     @municipalities = Municipality.all
   end

@@ -1,6 +1,10 @@
 <nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse' id= 'headerNavbar'>
   <div class='container'>
-    <a class="navbar-brand" href="/">
+    <% if user_signed_in? %>
+      <a class="navbar-brand" href="/states">
+    <% else %>
+      <a class="navbar-brand" href="/">
+      <% end %>
       <%= image_tag 'logo-gruen.jpg', width: 30, height: 30, class: 'd-inline-block align-top' %>
       <span class='logo-text'>PotentialGrün</span>
     </a>
@@ -20,3 +24,16 @@
     </div>
   </div>
 </nav>
+
+<% flash.each do |key, value| %>
+  <div class='container <%= "fb-#{key}" %>' id="flashBox">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class='message'>
+          <%= value %>
+          <span class='pointer'><%= fa_icon 'times-circle' %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/weddingwire/devise_saml_authenticatable.git
+  revision: 315a5194bbc0a0fc58fa525779dd9cdbe11e8190
+  branch: 1.3.1.1
+  specs:
+    devise_saml_authenticatable (1.3.1)
+      devise (> 2.0.0)
+      ruby-saml (~> 1.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -57,6 +66,7 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (6.7.7.2)
       execjs
+    bcrypt (3.1.11)
     bindex (0.5.0)
     bootstrap (4.0.0.alpha6)
       autoprefixer-rails (>= 6.0.3)
@@ -92,6 +102,12 @@ GEM
     concurrent-ruby (1.0.5)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
+    devise (4.3.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.2)
+      responders
+      warden (~> 1.2.3)
     emd (0.1.0)
       redcarpet
     erubis (2.7.0)
@@ -154,6 +170,7 @@ GEM
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
     normalize-rails (4.1.1)
+    orm_adapter (0.5.0)
     pg (0.20.0)
     polyamorous (1.3.1)
       activerecord (>= 3.0)
@@ -195,6 +212,11 @@ GEM
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
     redcarpet (3.4.0)
+    responders (2.4.0)
+      actionpack (>= 4.2.0, < 5.3)
+      railties (>= 4.2.0, < 5.3)
+    ruby-saml (1.4.3)
+      nokogiri (>= 1.5.10)
     sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -233,6 +255,8 @@ GEM
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
     unicode_utils (1.4.0)
+    warden (1.2.7)
+      rack (>= 1.0)
     web-console (3.5.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -254,6 +278,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.2)
   capistrano-rbenv (~> 2.1)
   coffee-rails (~> 4.2)
+  devise_saml_authenticatable!
   emd (~> 0.1.0)
   figaro
   font-awesome-rails (~> 4.7)

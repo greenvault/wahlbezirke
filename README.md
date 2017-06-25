@@ -12,10 +12,7 @@ dokumentiert.
 - `tablesort` Library im Frontend
 
 ## To-do
-- Suchfenster für Gemeindenamen mit Autocomplete-Funktion
-- auf Wahlkreisebene zwischen Gemeinde und Wahlbezirken switchen
-  (show all municipalities | show all precincts)
-- Login via netz.gruene.de per SAML
+- tbd. Geplante Features wurden implementiert.
 
 ## License
 Released under the [MIT License](http://www.opensource.org/licenses/MIT)

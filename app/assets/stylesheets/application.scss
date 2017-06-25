@@ -1,4 +1,6 @@
 @import 'variables';
+@import 'easy-autocomplete';
+@import 'easy-autocomplete.themes';
 @import 'fonts';
 @import 'font-awesome';
 @import 'bootstrap';
@@ -8,6 +10,4 @@
 @import 'tables';
 @import 'styles';
 
-/*
- *= require jquery-tablesorter/bootstrap_4
- */
+//= require jquery-tablesorter/bootstrap_4

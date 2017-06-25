@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-4">
+    <h1>Länder</h1>
+    <% @states.each do |state| %>
+      <p><%= link_to state.name, state %></p>
+    <% end %>
+  </div>
+
+  <div class="col-sm-4">
+    <h1>Wahlbezirke</h1>
+    <% @districts.each do |district| %>
+      <p><%= link_to district.name, district %></p>
+    <% end %>
+  </div>
+
+  <div class="col-sm-4">
+    <h1>Gemeinden</h1>
+    <% @municipalities.each do |municipality| %>
+      <p><%= link_to municipality.name, municipality_path(municipality.municipality_identifier) %></p>
+    <% end %>
+  </div>
+</div>

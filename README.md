@@ -10,6 +10,10 @@ dokumentiert.
 - Frontend-Darstellung auf Gemeinde- und WK-Ebene
 - korrekte alphabetische Sortierung der Gemeindenamen
 - `tablesort` Library im Frontend
+- umschaltbare Darstellung Wahlbezirke / Gemeinden je Wahlkreis
+- Suchfunktion mit Autocomplete via `ransack` + `easyautocomplete.js`
+- SAML-Login mit `netz.gruene.de`
+
 
 ## To-do
 - tbd. Geplante Features wurden implementiert.

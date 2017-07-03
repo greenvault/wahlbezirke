@@ -15,6 +15,6 @@ end
 json.municipalities do
   json.array!(@municipalities) do |municipality|
     json.name municipality.name
-    json.url municipality_path(municipality)
+    json.url municipality_path(municipality.municipality_identifier)
   end
 end

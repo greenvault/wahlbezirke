@@ -19,7 +19,7 @@ Nach der ersten Sortierung kann zusätzlich eine zweite Spalte als Sortierkriter
 
 
 ---
-Daten: Sebastian Reinkunz und Marcel Neunhöffer
+Daten: Sebastian Reinkunz, Marcel Neunhöffer und Hannes Hemker
 
 Programmierung: [Jonas Knipper](https://jonasknipper.de), KV Berlin-Mitte
 

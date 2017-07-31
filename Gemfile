@@ -8,7 +8,7 @@ end
 gem 'rails', '~> 5.0.4'
 gem 'figaro'
 gem 'administrate', '~> 0.6.0'
-gem 'thin'
+gem 'puma'
 gem 'haml', '~> 5.0.1'
 gem 'sort_alphabetical', '~> 1.1.0'
 gem 'bootstrap', '~> 4.0.0.alpha6'

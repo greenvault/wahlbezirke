@@ -5,7 +5,7 @@ Potentialgrün soll euch helfen, euren Wahlkampf auf die aussichtsreichen Wahlbe
 Im Wahlatlas können wir nur dann Daten auf der Wahlbezirksebene darstellen, wenn wir diese in digital verarbeitbarer Form bekommen können. Dies ist leider in vielen Regionen und Bundesländern noch nicht der Fall. Deshalb können wir dort die Daten nur für die Gemeindeebene einspielen.
 
 ## 3) Warum sind die Wahlkreise und -bezirke Stand Bundestagswahl 2013 und nicht 2017?
-Leider haben wir nur für wenige Stadtstaaten und Kommunen digitale Daten über die Wahlbezirke für die Bundestagswahl 2017. Es gibt bundesweit keine Zusammenstellung dieser Daten, jede Kommune entscheidet selbst über die Wahlbezirke und wie diese im Detail veröffentlicht werden.
+Grundlage der Potentialberechnung ist das Wahlergebnis der Bundestagswahl 2013. Da wir nur für wenige Stadtstaaten und Kommunen digitale Daten über die Wahlbezirke für die Bundestagswahl 2017 haben, werden die Potentiale in den Wahlbezirken von 2013 dargestellt. Es gibt bundesweit keine Zusammenstellung dieser Daten, jede Kommune entscheidet selbst über die Wahlbezirke und wie diese im Detail veröffentlicht werden. 
 
 ## 4) Was ist das Potential?
 Das Potential ist eine Bewertung der Wahlbezirke zwischen 0 (kein Potential) bis 100 (höchstes Potential). Da wo wir hohes Potential errechnet haben, gehen wir davon aus, dass es am einfachsten ist, Menschen dafür zu mobilisieren, uns Grünen die Stimme zu geben. So könnt ihr schnell für eure Wahlbezirke und Gemeinden sehen, wo es sich wirklich lohnt, an den Haustüren um Stimmen zu kämpfen.

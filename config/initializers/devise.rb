@@ -263,8 +263,8 @@ Devise.setup do |config|
     remote_data                                   = idp_metadata_parser.parse_remote("https://netz.gruene.de/saml2/idp/metadata.php")
     settings.certificate                          = ENV['saml_certificate']
     settings.private_key                          = ENV['saml_private_key']
-    settings.assertion_consumer_service_url       = "http://wahlbezirke.gruene.de/users/saml/auth"
-    settings.issuer                               = "http://wahlbezirke.gruene.de/users/saml/metadata"
+    settings.assertion_consumer_service_url       = "https://wahlbezirke.gruene.de/users/saml/auth"
+    settings.issuer                               = "https://wahlbezirke.gruene.de/users/saml/metadata"
     settings.name_identifier_format               = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
     settings.assertion_consumer_service_binding   = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
     settings.authn_context                        = ""

@@ -11,6 +11,7 @@
 # Ignore local files
 *.pem
 *.crt
+*.csv
 
 # Ignore the default SQLite database.
 /db/*.sqlite3

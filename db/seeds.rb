@@ -5,6 +5,14 @@ File.readlines("#{Rails.root}/db/seeds/states.csv").drop(1).each do |state|
   print '.'
 end
 
+# Load data seed
+puts 'Loading data...'
+
+File.readlines("#{Rails.root}/db/seeds/data.csv").drop(1).
+  each do |item|
+
+end
+
 # Create districts from seed file
 puts 'Creating districts...'
 File.readlines("#{Rails.root}/db/seeds/districts.csv").drop(1).

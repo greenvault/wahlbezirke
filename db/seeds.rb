@@ -1,73 +1,66 @@
-# Create states from seed file
-File.readlines("#{Rails.root}/db/seeds/states.csv").drop(1).each do |state|
-  name, abbreviation = state.chomp.split(';')
-  State.create(name: name, abbreviation: abbreviation)
-  print '.'
-end
+# Set up states hash
+states = {
+'Baden-Württemberg': 'BW',
+'Bayern': 'BY',
+'Berlin': 'BE',
+'Brandenburg':	'BB',
+'Bremen': 'HB',
+'Hamburg': 'HH',
+'Hessen': 'HE',
+'Mecklenburg-Vorpommern': 'MV',
+'Niedersachsen': 'NI',
+'Nordrhein-Westfalen':	'NW',
+'Rheinland-Pfalz': 'RP',
+'Saarland': 'SL',
+'Sachsen': 'SN',
+'Sachsen-Anhalt': 'ST',
+'Schleswig-Holstein': 'SH',
+'Thüringen':	'TH'
+}
 
-# Load data seed
-puts 'Loading data...'
+# Create item struct
+class Item < Struct.new(:district_identifier, :municipality,
+                        :municipality_identifier, :precinct_identifier,
+                        :district_score, :district_rank,
+                        :municipality_rank, :state, :election
 
-File.readlines("#{Rails.root}/db/seeds/data.csv").drop(1).
-  each do |item|
+# Load seed data for BTW 2017
+puts 'Loading data for BTW2017...'
+e = Election.find_by(abbreviation: 'btw2017')
 
-end
+File.readlines("#{Rails.root}/db/seeds/btw2017.csv").drop(1).
+  each do |i|
+  district_identifier, municipality, municipality_identifier,
+    precinct_identifier, district_score, district_rank,
+    municipality_rank, state = i.chomp.split(';')
 
-# Create districts from seed file
-puts 'Creating districts...'
-File.readlines("#{Rails.root}/db/seeds/districts.csv").drop(1).
-  each do |district|
-  state_id, district_identifier, name = district.chomp.split(';')
-  District.create(state: State.find(state_id),
-                  district_identifier: district_identifier, name: name)
-  print '.'
-end
+  s = State.find_by(name: i.state)
+  if s.nil?
+    s = State.create(name: i.state, abbreviation: states[i.state.to_sym])
+  end
 
-# Create municipalities from seed file
-puts 'Creating municipalities...'
-File.readlines("#{Rails.root}/db/seeds/municipalities.csv").drop(1).
-  each do |municipality|
-  name, municipality_identifier, district_identifier = municipality.
-    chomp.split(';')
-  Municipality.create(name: name,
-                      municipality_identifier: municipality_identifier,
-                      district: District.
-                        find_by(district_identifier: district_identifier))
-  print '.'
-end
+  d = District.find_by(district_identifier: i.district_identifier)
+  if d.nil?
+    d = District.create(district_identifier: i.district_identifier,
+                        state: s, election: e)
+  end
 
-# Create precincts from seed file
-puts 'Creating precincts...'
-File.readline("#{Rails.root}/db/seeds/precincts.csv").drop(1).
-  each do |precinct|
-  municipality, district, district_score, precinct_identifier = precinct.
-    chomp.split(';')
-  Precinct.create(municipality: municipality, district:
-                  district_score: district_score,
-                  precinct_identifier: precinct_identifier
+  m = Municipality.find_by(municipality_identifier: i.municipality_identifier)
+  if m.nil?
+    m = Municipality.create(name: i.municipality,
+                            municipality_identifier: i.municipality_identifier,
+                            district: d, election: e)
+  end
 
-end
-
-# Assign municipality rank
-puts 'Assigning municipality rank...'
-Municipality.all.each do |municipality|
-  i = 1
-  municipality.precincts.sort_by { |precinct| precinct.district_score }.
-    reverse.each do |p|
-      p.update(municipality_rank: i)
-      i += 1
-      print '.'
+  p = Precinct.find_by(precinct_identifier: i.precinct_identifier,
+                       municipality: m)
+  if p.nil?
+    p = Precinct.create(precinct_identifier: i.precinct_identifier,
+                          district_score: i.district_score.gsub(',','.'),
+                          district_rank: i.district_rank,
+                          municipality_rank: i.municipality_rank,
+                          municipality: m, election: e)
   end
 end
 
-# Assign district rank
-puts 'Assigning district rank...'
-District.all.each do |district|
-  i = 1
-  district.precincts.sort_by { |precinct| precinct.district_score }.
-    reverse.each do |p|
-      p.update(district_rank: i)
-      i += 1
-      print '.'
-  end
-end
+puts 'Import complete.'

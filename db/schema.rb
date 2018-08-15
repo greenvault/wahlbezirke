@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622123418) do
+ActiveRecord::Schema.define(version: 20180815192535) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "district_identifier"
@@ -18,8 +18,17 @@ ActiveRecord::Schema.define(version: 20170622123418) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "name"
+    t.integer  "election_id"
     t.index ["district_identifier"], name: "index_districts_on_district_identifier", unique: true
+    t.index ["election_id"], name: "index_districts_on_election_id"
     t.index ["state_id"], name: "index_districts_on_state_id"
+  end
+
+  create_table "elections", force: :cascade do |t|
+    t.string   "name"
+    t.string   "abbreviation"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "municipalities", force: :cascade do |t|
@@ -28,7 +37,9 @@ ActiveRecord::Schema.define(version: 20170622123418) do
     t.integer  "district_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "election_id"
     t.index ["district_id"], name: "index_municipalities_on_district_id"
+    t.index ["election_id"], name: "index_municipalities_on_election_id"
     t.index ["municipality_identifier"], name: "index_municipalities_on_municipality_identifier", unique: true
     t.index ["name"], name: "index_municipalities_on_name"
   end
@@ -42,7 +53,9 @@ ActiveRecord::Schema.define(version: 20170622123418) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.integer  "district_id"
+    t.integer  "election_id"
     t.index ["district_id"], name: "index_precincts_on_district_id"
+    t.index ["election_id"], name: "index_precincts_on_election_id"
     t.index ["municipality_id"], name: "index_precincts_on_municipality_id"
     t.index ["precinct_identifier"], name: "index_precincts_on_precinct_identifier"
   end

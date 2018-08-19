@@ -18,6 +18,13 @@ states = {
 'Thüringen':	'TH'
 }
 
+# Create elections
+[
+  [ 'name': 'Bundestagswahl 2017', 'abbreviation': 'btw2017' ],
+  [ 'name': 'Landtagswahl Hessen 2018', 'abbreviation': 'ltwh2018' ],
+  [ 'name': 'Landtagswahl Bayern 2018', 'abbreviation': 'ltwb2018' ]
+].each { |e| Election.create e }
+
 # Create item struct
 class Item < Struct.new(:district_identifier, :municipality,
                         :municipality_identifier, :precinct_identifier,
@@ -64,3 +71,36 @@ File.readlines("#{Rails.root}/db/seeds/btw2017.csv").drop(1).
 end
 
 puts 'Import complete.'
+
+# Load seed data for LTW Hessen 2018
+puts 'Loading data for LTW Hessen 2018'
+e = Election.find_by(abbreviation: 'ltwh2018')
+
+File.readlines("#{Rails.root}/db/seeds/ltwh2018-districts.csv").drop(1).
+  each do |i|
+  state, ars, municipality, district_identifier, district_name,
+    precinct_identifier, district_score, btw_precinct,
+    district_name = i.chomp.split(';')
+end
+
+File.readlines("#{Rails.root}/db/seeds/ltwh2018-municipalities.csv").drop(1).
+  each do |i|
+  state, ars, municipality, precinct_identifier, precinct_name,
+    municipality_score = i.chomp.split(';')
+end
+
+# Load seed data for LTW Bayern 2018
+puts 'Loading data for LTW Bayern 2018'
+e = Election.find_by(abbreviation: 'ltwb2018')
+
+File.readlines("#{Rails.root}/db/seeds/ltwb2018-districts.csv").drop(1).
+  each do |i|
+  state, ars, municipality, district_identifier, district_name,
+    precinct_identifier, district_score = i.chomp.split(';')
+end
+
+File.readlines("#{Rails.root}/db/seeds/ltwh2018-municipalities.csv").drop(1).
+  each do |i|
+  state, ars, municipality, precinct_identifier, precinct_name,
+    district_score = i.chomp.split(';')
+end

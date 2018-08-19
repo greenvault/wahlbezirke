@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180815192535) do
+ActiveRecord::Schema.define(version: 20180819083520) do
 
   create_table "districts", force: :cascade do |t|
     t.string   "district_identifier"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20180815192535) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "election_id"
+    t.string   "ars"
+    t.decimal  "district_score"
     t.index ["district_id"], name: "index_municipalities_on_district_id"
     t.index ["election_id"], name: "index_municipalities_on_election_id"
     t.index ["municipality_identifier"], name: "index_municipalities_on_municipality_identifier", unique: true
@@ -54,6 +56,8 @@ ActiveRecord::Schema.define(version: 20180815192535) do
     t.datetime "updated_at",          null: false
     t.integer  "district_id"
     t.integer  "election_id"
+    t.string   "btw_district"
+    t.string   "name"
     t.index ["district_id"], name: "index_precincts_on_district_id"
     t.index ["election_id"], name: "index_precincts_on_election_id"
     t.index ["municipality_id"], name: "index_precincts_on_municipality_id"

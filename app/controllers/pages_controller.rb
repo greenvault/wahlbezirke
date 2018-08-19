@@ -6,4 +6,8 @@ class PagesController < ApplicationController
 
   def login
   end
+
+  def choose_election
+    @elections = Election.all
+  end
 end

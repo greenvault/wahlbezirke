@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'faq', to: 'pages#faq'
   get 'search', controller: :main
   get 'login', to: 'pages#login'
+  get 'choose_election', to: 'pages#choose_election'
   get 'municipalities', to: 'states#index'
 
   resources :states

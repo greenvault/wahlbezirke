@@ -1,0 +1,15 @@
+.row
+  .col-sm-12.col-md-8
+    %h1 Bitte gewünschte Wahl anklicken
+
+.row
+  - @elections.each do |e|
+    .col-sm-3.election-card
+      %a(href='#')
+        .card
+          .flag
+            P
+          %h2
+            = e.name
+          %p.election-comment
+            = e.comment

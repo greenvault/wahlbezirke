@@ -25,12 +25,6 @@ states = {
   [ 'name': 'Landtagswahl Bayern 2018', 'abbreviation': 'ltwb2018' ]
 ].each { |e| Election.create e }
 
-# Create item struct
-class Item < Struct.new(:district_identifier, :municipality,
-                        :municipality_identifier, :precinct_identifier,
-                        :district_score, :district_rank,
-                        :municipality_rank, :state, :election
-
 # Load seed data for BTW 2017
 puts 'Loading data for BTW2017...'
 e = Election.find_by(abbreviation: 'btw2017')

@@ -32,7 +32,7 @@ precincts = 0
 districts = 0
 municipalities = 0
 
-File.readlines("#{Rails.root}/db/seeds/ltwh2018-districts-mini.csv").drop(1).
+File.readlines("#{Rails.root}/db/seeds/ltwh2018-precints-mini.csv").drop(1).
   each do |i|
   state, ars, municipality, district_identifier, district_name,
     precinct_identifier, district_score, btw_district,
@@ -43,7 +43,8 @@ File.readlines("#{Rails.root}/db/seeds/ltwh2018-districts-mini.csv").drop(1).
   if d.nil?
     d = District.create(district_identifier: district_identifier, state: @state,
                         election: @ltwh, name: district_name)
-    print " Creating district #{@state} #{district_name} - #{district_identifier}."
+    print " Creating district #{@state.abbreviation}
+    #{district_name} - #{district_identifier}."
     districts += 1
   end
 

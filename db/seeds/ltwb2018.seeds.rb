@@ -1,21 +1,21 @@
-# Load seed data for LTW Hessen 2018
-puts 'Loading data for LTW Hessen 2018'
-@ltwh = Election.find_by(abbreviation: 'ltwh2018')
+# Load seed data for LTW Bayern 2018
+puts 'Loading data for LTW Bayern 2018'
+@election = Election.find_by(abbreviation: 'ltwb2018')
 municipalities = 1
-@state = State.find_by(name: "Hessen")
+@state = State.find_by(name: "Bayern")
 
 # Load seed data for municipalities and assign temporary district
 @district = District.create(state: @state, name: 'temp_district',
-                    election: @ltwh, district_identifier: 'test123')
+                    election: @election, district_identifier: 'test123')
 
-File.readlines("#{Rails.root}/db/seeds/ltwh2018-municipalities.csv").drop(1).
+File.readlines("#{Rails.root}/db/seeds/ltwb2018-municipalities.csv").drop(1).
   each do |i|
   state, ars, municipality, district_identifier, district_name,
     district_score = i.chomp.split(';')
 
-  m = Municipality.find_by(municipality_identifier: ars, election: @ltwh)
+  m = Municipality.find_by(municipality_identifier: ars, election: @election)
   if m.nil?
-    m = Municipality.create(name: municipality, election: @ltwh,
+    m = Municipality.create(name: municipality, election: @election,
                             municipality_identifier: ars,
                             district: @district,
                             district_score: district_score)
@@ -32,22 +32,22 @@ precincts = 0
 districts = 0
 municipalities = 0
 
-File.readlines("#{Rails.root}/db/seeds/ltwh2018-districts-mini.csv").drop(1).
+File.readlines("#{Rails.root}/db/seeds/ltwb2018-precincts-mini.csv").drop(1).
   each do |i|
   state, ars, municipality, district_identifier, district_name,
-    precinct_identifier, district_score, btw_district,
-    precinct_name = i.chomp.split(';')
+    precinct_identifier, district_score, = i.chomp.split(';')
 
   d = District.find_by(district_identifier: district_identifier,
-                       election: @ltwh)
+                       election: @election)
   if d.nil?
     d = District.create(district_identifier: district_identifier, state: @state,
-                        election: @ltwh, name: district_name)
-    print " Creating district #{@state} #{district_name} - #{district_identifier}."
+                        election: @election, name: district_name)
+    print " Creating district #{@state.abbreviation}
+    #{district_name} - #{district_identifier}."
     districts += 1
   end
 
-  m = Municipality.find_by(municipality_identifier: ars, election: @ltwh)
+  m = Municipality.find_by(municipality_identifier: ars, election: @election)
   if m.district == @district
     m.update(district: d)
     print " Updated municipality #{municipality} to #{d.district_identifier}"
@@ -55,13 +55,11 @@ File.readlines("#{Rails.root}/db/seeds/ltwh2018-districts-mini.csv").drop(1).
   end
 
   p = Precinct.find_by(precinct_identifier: precinct_identifier,
-                       municipality: m, election: @ltwh)
+                       municipality: m, election: @election)
   if p.nil?
     p = Precinct.create(precinct_identifier: precinct_identifier,
-                        municipality: m, election: @ltwh, district: d,
-                        btw_district: btw_district,
-                        district_score: district_score,
-                        name: precinct_name)
+                        municipality: m, election: @election, district: d,
+                        district_score: district_score)
     precincts += 1
   end
   print '.'

@@ -4,6 +4,7 @@ class District < ApplicationRecord
   has_many :precincts
   has_many :municipalities
   default_scope { order(district_identifier: :asc) }
+  scope :election, -> (election) { where(election: election) }
 
   def municipalities
     Municipality.where(district: self)

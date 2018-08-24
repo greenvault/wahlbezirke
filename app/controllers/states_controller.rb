@@ -1,5 +1,6 @@
 class StatesController < ApplicationController
   before_action :authenticated_user?
+  before_action :current_election
 
   def index
     @states = State.all.order 'name ASC'

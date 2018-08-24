@@ -1,4 +1,6 @@
 class MainController < ApplicationController
+  before_action :current_election
+
   def search
     @states = State.ransack(name_cont: search_params).result(distinct: true)
     @districts = District.ransack(name_cont: search_params).result(distinct: true)

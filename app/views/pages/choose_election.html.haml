@@ -5,7 +5,7 @@
 .row
   - @elections.each do |e|
     .col-sm-3.election-card
-      %a(href='#')
+      %a(href="/sessions/create?election=#{e.id}")
         .card
           .flag
             P

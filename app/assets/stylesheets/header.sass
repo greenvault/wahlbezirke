@@ -14,7 +14,7 @@ button#searchSubmit
 
 #headerNavbar
   height: 4rem
-  margin-bottom: 2rem
+  margin-bottom: 1rem
 
 .logo-text
   font-family: 'Arvo Regular'
@@ -48,6 +48,9 @@ a.navbar-brand
   &:hover > img
     box-shadow: 0px 0px 8px rgba($navlinkColor,0.8)
 
+span.election-indicator
+  margin-left: 12px
+
 #flashBox
   position: absolute
   top: 0
@@ -76,3 +79,19 @@ span.pointer
 
 .fb-success
   background-color: $success
+
+.indicatorRow
+  margin-top: 1.2rem
+  margin-bottom: 1.2rem
+
+.indicator a
+  color: $dark
+  font-size: 0.9em
+  font-weight: 700
+  padding: 4px 12px
+  border-radius: 5px
+  border: 3px solid $dark
+  text-transform: uppercase
+
+  &:hover, &:focus, &:active
+    background: $hover

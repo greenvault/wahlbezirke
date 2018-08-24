@@ -4,10 +4,11 @@
       <a class="navbar-brand" href="/states">
     <% else %>
       <a class="navbar-brand" href="/">
-      <% end %>
+    <% end %>
       <%= image_tag 'logo-gruen.jpg', width: 30, height: 30, class: 'd-inline-block align-top' %>
       <span class='logo-text'>PotentialGrün</span>
     </a>
+    <div class='election-indicator'>Aktive Wahl: hallo</div>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <%= form_tag('/search', local: true, method: :get, class: 'form-inline searchModule' ) do %>
         <%= text_field_tag(:q, nil, data: { behavior: 'autocomplete' },
@@ -24,6 +25,14 @@
     </div>
   </div>
 </nav>
+
+<div class='container indicatorRow'>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <%= render 'layouts/indicator' %>
+    </div>
+  </div>
+</div>
 
 <% flash.each do |key, value| %>
   <div class='container <%= "fb-#{key}" %>' id="flashBox">

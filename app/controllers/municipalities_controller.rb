@@ -1,22 +1,15 @@
 class MunicipalitiesController < ApplicationController
   before_action :authenticated_user?
+  before_action :current_election
 
   def index
-    @municipalities = Municipality.all
-  end
-
-  def new
-    @municipality = Municipality.new
-  end
-
-  def create
-    @municipality = Municipality.new(municipality_params)
+    @municipalities = Municipality.election(@current_election).all
   end
 
   def show
     find_or_redirect
-    @precincts = Precinct.where(municipality: @municipality).
-      sort_by { |p| p.district_rank }
+    @precincts = Precinct.election(@current_election).
+      where(municipality: @municipality).sort_by { |p| p.district_rank }
   end
 
   private
@@ -27,7 +20,7 @@ class MunicipalitiesController < ApplicationController
   end
 
   def find_or_redirect
-    unless @municipality = Municipality.
+    unless @municipality = Municipality.election(@current_election).
         find_by(municipality_identifier: params[:id])
       redirect_to :root
     end

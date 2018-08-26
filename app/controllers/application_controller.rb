@@ -4,14 +4,7 @@ class ApplicationController < ActionController::Base
   private
     def authenticated_user?
       unless user_signed_in?
-        return nil
-        # redirect_to login_path, notice: 'Anmeldung erforderlich'
-      end
-    end
-
-    def active_election?
-      unless session[:current_election]
-        redirect_to election_path, notice: 'Bitte Wahl auswählen'
+        redirect_to login_path, notice: 'Anmeldung erforderlich'
       end
     end
 

@@ -1,10 +1,12 @@
-<div class="row">
-  <div class="col-sm-4">
-    <h1>Länder</h1>
-    <% @states.each do |state| %>
-      <p><%= link_to state.name, state %></p>
-    <% end %>
-  </div>
+<% if @current_election.state == 'all' %>
+  <div class="row">
+    <div class="col-sm-4">
+      <h1>Länder</h1>
+      <% @states.each do |state| %>
+        <p><%= link_to state.name, state %></p>
+      <% end %>
+    </div>
+<% end %>
 
   <div class="col-sm-4">
     <h1>Wahlbezirke</h1>

@@ -2,8 +2,9 @@ class MainController < ApplicationController
   before_action :current_election
 
   def search
-    @states = State.election(@current_election).
-      ransack(name_cont: search_params).result(distinct: true)
+    if @current_election.state == 'all'
+      @states = State.ransack(name_cont: search_params).result(distinct: true)
+    end
     @districts = District.election(@current_election).
       ransack(name_cont: search_params).result(distinct: true)
     @municipalities = Municipality.election(@current_election).
@@ -12,7 +13,9 @@ class MainController < ApplicationController
     respond_to do |format|
       format.html {}
       format.json {
-        @states = @states.limit(3)
+        if @current_election.state == 'all'
+          @states = @states.limit(3)
+        end
         @districts = @districts.limit(6)
         @municipalities = @municipalities.limit(10)
       }

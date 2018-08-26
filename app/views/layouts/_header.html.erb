@@ -1,7 +1,11 @@
 <nav class='navbar navbar-toggleable-md navbar-inverse bg-inverse' id= 'headerNavbar'>
   <div class='container'>
     <% if user_signed_in? %>
-      <a class="navbar-brand" href="/states">
+      <% if @current_election.state == 'all' %>
+        <a class="navbar-brand" href="/states">
+      <% else %>
+        <a class="navbar-brand" href="/districts">
+      <% end %>
     <% else %>
       <a class="navbar-brand" href="/">
     <% end %>

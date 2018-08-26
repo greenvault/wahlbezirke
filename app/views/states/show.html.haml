@@ -1,10 +1,14 @@
 .row
   .col-sm-12
     %ol.breadcrumb
-      %li.breadcrumb-item
-        = link_to 'Start', states_path
-      %li.breadcrumb-item.active
-        = @state.name
+      - if @current_election.state == 'all'
+        %li.breadcrumb-item
+          = link_to 'Start', states_path
+        %li.breadcrumb-item.active
+          = @state.name
+      - else
+        %li.breadcrumb-item
+          Start
 .row
   .col-sm-12
     %h3

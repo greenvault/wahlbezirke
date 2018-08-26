@@ -1,10 +1,16 @@
 .row
-  .col-sm-6
-    %h3 Wahlkreis
-    %p
-      There are
-      = @districts.count
-      districts here!
-      Bitte Wahlkreis wählen
-      = select_tag 'districts',
-        options_from_collection_for_select(@districts, 'id', 'district_identifier')
+  .col-sm-12
+    %ol.breadcrumb
+      %li.breadcrumb-item
+        Start
+.row
+  - @districts.each do |d|
+    .col-sm-2
+      = link_to district_path(d.district_identifier) do
+        .district-cell
+          = d.district_identifier
+          .district-info
+            .item
+              = pluralize(d.municipalities.count, 'Gemeinde', 'Gemeinden')
+            .item
+              = pluralize(d.precincts.count, 'Wahlbezirk', 'Wahlbezirke')

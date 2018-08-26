@@ -257,31 +257,31 @@ Devise.setup do |config|
   config.saml_session_index_key = :session_index
   config.saml_use_subject = true
   config.idp_settings_adapter = nil
-  config.saml_configure do |settings|
-    idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
+#  config.saml_configure do |settings|
+#    idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
     # Returns OneLogin::RubySaml::Settings prepopulated with idp metadata
-    remote_data                                   = idp_metadata_parser.parse_remote("https://netz.gruene.de/saml2/idp/metadata.php")
-    settings.certificate                          = ENV['saml_certificate']
-    settings.private_key                          = ENV['saml_private_key']
-    settings.assertion_consumer_service_url       = "https://wahlbezirke.gruene.de/users/saml/auth"
-    settings.issuer                               = "https://wahlbezirke.gruene.de/users/saml/metadata"
-    settings.name_identifier_format               = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
-    settings.assertion_consumer_service_binding   = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
-    settings.authn_context                        = ""
-    settings.idp_slo_target_url                   = ""
-    settings.security[:authn_requests_signed]     = true
-    settings.security[:want_assertions_signed]    = true
-    settings.security[:want_assertions_encrypted] = true
-    settings.security[:want_name_id]              = true
-    settings.security[:metadata_signed]           = true
-    settings.security[:embed_sign]                = false
-    settings.security[:logout_requests_signed]    = true
-    settings.security[:logout_responses_signed]   = true
-    settings.security[:digest_method]             = XMLSecurity::Document::SHA1
-    settings.security[:signature_method]          = XMLSecurity::Document::RSA_SHA1
-    settings.idp_sso_target_url                   = remote_data.idp_sso_target_url
-    settings.idp_cert                             = remote_data.idp_cert
-  end
+#    remote_data                                   = idp_metadata_parser.parse_remote("https://netz.gruene.de/saml2/idp/metadata.php")
+#    settings.certificate                          = ENV['saml_certificate']
+#    settings.private_key                          = ENV['saml_private_key']
+#    settings.assertion_consumer_service_url       = "https://wahlbezirke.gruene.de/users/saml/auth"
+#    settings.issuer                               = "https://wahlbezirke.gruene.de/users/saml/metadata"
+#    settings.name_identifier_format               = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
+#    settings.assertion_consumer_service_binding   = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+#    settings.authn_context                        = ""
+#    settings.idp_slo_target_url                   = ""
+#    settings.security[:authn_requests_signed]     = true
+#    settings.security[:want_assertions_signed]    = true
+#    settings.security[:want_assertions_encrypted] = true
+#    settings.security[:want_name_id]              = true
+#    settings.security[:metadata_signed]           = true
+#    settings.security[:embed_sign]                = false
+#    settings.security[:logout_requests_signed]    = true
+#    settings.security[:logout_responses_signed]   = true
+#    settings.security[:digest_method]             = XMLSecurity::Document::SHA1
+#    settings.security[:signature_method]          = XMLSecurity::Document::RSA_SHA1
+#    settings.idp_sso_target_url                   = remote_data.idp_sso_target_url
+#    settings.idp_cert                             = remote_data.idp_cert
+#  end
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

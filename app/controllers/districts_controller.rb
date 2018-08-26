@@ -1,43 +1,36 @@
 class DistrictsController < ApplicationController
   before_action :authenticated_user?
   before_action :current_election
-    @districts = District.all
 
   def index
+    @districts = District.election(@current_election).
+      sort_by { |d| d.district_identifier.split(' ').map(&:to_i) }
   end
 
   def show
-    @district = District.find_by(district_identifier: params[:id],
-                                election: current_election)
-    if params['gemeinde'] == '1'
-      @municipalities = Municipality.where(district: @district,
-                                          election: current_election).
-        sort_alphabetical_by(&:name)
-      render 'show_municipalities'
+    if @current_election.state == 'he'
+      @district = District.election(@current_election).
+        find_by(district_identifier: params[:id])
+      if params['gemeinde'] == '1'
+        @municipalities = Municipality.election(@current_election).
+          where(district: @district).sort_alphabetical_by(&:name)
+        render 'show_ltwh_municipalities'
+      else
+        @precincts = Precinct.election(@current_election).
+          where(district: @district).sort_by { |p| p.district_score }
+        render 'show_ltwh'
+      end
     else
-      @precincts = Precinct.where(district: @district,
-                                  election: current_election).
-        sort_by { |p| p.district_rank }
+      @district = District.election(@current_election).
+        find_by(district_identifier: params[:id])
+      if params['gemeinde'] == '1'
+        @municipalities = Municipality.election(@current_election).
+          where(district: @district).sort_alphabetical_by(&:name)
+        render 'show_municipalities'
+      else
+        @precincts = Precinct.election(@current_election).
+          where(district: @district).sort_by { |p| p.district_rank }
+      end
     end
-  end
-
-  def new
-    @district = District.new
-  end
-
-  def create
-    @district = District.new(district_params)
-    if @district.save
-      flash[:success] = "District created"
-      redirect_to @district
-    else
-      render 'new'
-    end
-  end
-
-  private
-
-  def district_params
-    params.require(:district).permit(:district_identifier, :state_id, :election_id)
   end
 end

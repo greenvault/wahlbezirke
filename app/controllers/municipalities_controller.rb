@@ -14,11 +14,6 @@ class MunicipalitiesController < ApplicationController
 
   private
 
-  def municipality_params
-    params.require(:municipality).
-      permit(:name, :municipality_identifier, :district_id)
-  end
-
   def find_or_redirect
     unless @municipality = Municipality.election(@current_election).
         find_by(municipality_identifier: params[:id])

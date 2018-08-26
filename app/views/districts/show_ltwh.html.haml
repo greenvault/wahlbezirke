@@ -26,21 +26,21 @@
     %table.table.table-hover.table-striped.tablesorter
       %thead
         %tr
-          %th.title(data-sort="string")
+          %th.titleLtwh(data-sort="string")
             %span
             Gemeinde
           %th.data.number(data-sort="string")
             %span
             Wahlbezirk
+          %th.data.number(data-sort="string")
+            %span
+            Bezeichnung
+          %th.data.number(data-sort="string")
+            %span
+            BTW-WK
           %th.data.number(data-sort="float")
             %span
             Score (WK)
-          %th.data.number(data-sort="int")
-            %span
-            Rang (WK)
-          %th.data.number(data-sort="int")
-            %span
-            Rang (Gemeinde)
           %th.filler
       %tbody
       - @precincts.each do |p|
@@ -50,9 +50,9 @@
           %td.data.number
             = p.precinct_identifier
           %td.data.number
+            = display_score p.name
+          %td.data.number
+            = p.btw_district.to_s
+          %td.data.number
             = display_score p.district_score
-          %td.data.number
-            = p.district_rank
-          %td.data.number
-            = p.municipality_rank
           %td.filler

@@ -6,9 +6,14 @@ class SessionsController < ApplicationController
 
   private
     def election_index
-      if @current_election.state == 'all'
+      if chosen_election.state == 'all'
         states_path
       else
-        municipalities_path
+        districts_path
+      end
+    end
+
+    def chosen_election
+      Election.find_by_id(session[:current_election_id]) || Election.first
     end
 end

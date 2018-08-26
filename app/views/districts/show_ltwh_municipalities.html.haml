@@ -32,7 +32,10 @@
           %th(data-sort="integer")
             %span
             Gemeinde-ID
-          %th.municipalityFiller
+          %th(data-sort="integer")
+            %span
+            Gemeinde-Score
+          %th.municipalityLtwhFiller
       %tbody
       - @municipalities.each do |m|
         %tr(data-link="#{municipality_path(m.municipality_identifier)}")
@@ -41,4 +44,6 @@
           %td
             = link_to id_cleaner(m.municipality_identifier),
               municipality_path(m.municipality_identifier)
-          %td.municipalityFiller
+          %td
+            = m.district_score
+          %td.municipalityLtwhFiller

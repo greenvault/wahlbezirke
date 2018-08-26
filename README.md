@@ -24,3 +24,4 @@ Released under the [MIT License](http://www.opensource.org/licenses/MIT)
 - sessions_path?
 - change root page, redirect to states#index from session#create?
 - add state to election?
+- regex: ^[\S]+

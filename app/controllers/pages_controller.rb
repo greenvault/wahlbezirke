@@ -8,10 +8,6 @@ class PagesController < ApplicationController
   def login
   end
 
-  def election_display
-    @params = params['election']
-  end
-
   def choose_election
     @elections = Election.all
   end

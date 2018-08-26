@@ -29,30 +29,30 @@
           %th.titleLtwh(data-sort="string")
             %span
             Gemeinde
-          %th.data.number(data-sort="string")
+          %th.dataMini.number(data-sort="string")
             %span
             Wahlbezirk
           %th.data.number(data-sort="string")
             %span
             Bezeichnung
-          %th.data.number(data-sort="string")
+          %th.dataMini.number(data-sort="string")
             %span
             BTW-WK
-          %th.data.number(data-sort="float")
+          %th.dataMini.number(data-sort="float")
             %span
             Score (WK)
           %th.filler
       %tbody
       - @precincts.each do |p|
         %tr
-          %td
+          %td.ltwh
             = link_to p.municipality.name, municipality_path(p.municipality.municipality_identifier)
-          %td.data.number
+          %td.dataMini.number
             = p.precinct_identifier
           %td.data.number
             = display_score p.name
-          %td.data.number
+          %td.dataMini.number
             = p.btw_district.to_s
-          %td.data.number
+          %td.dataMini.number
             = display_score p.district_score
           %td.filler

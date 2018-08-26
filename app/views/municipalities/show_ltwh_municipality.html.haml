@@ -1,4 +1,4 @@
-mrow
+.row
   .col-sm-12
     %ol.breadcrumb
       %li.breadcrumb-item
@@ -25,23 +25,20 @@ mrow
           %th(data-sort="string")
             %span
             Wahlbezirk
+          %th(data-sort="string")
+            %span
+            Wahlbezirk-Name
           %th(data-sort="float")
             %span
             Targeting-Score im Wahlkreis
-          %th(data-sort="int")
-            %span
-            Targeting-Rang im Wahlkreis
-          %th(data-sort="int")
-            %span
-            Targeting-Rang in Gemeinde
+          %th.filler
       %tbody
       - @precincts.each do |p|
         %tr
           %td
             = p.precinct_identifier
           %td
+            = p.name
+          %td
             = display_score p.district_score
-          %td
-            = p.district_rank
-          %td
-            = p.municipality_rank
+          %td.filler

@@ -8,8 +8,14 @@ class MunicipalitiesController < ApplicationController
 
   def show
     find_or_redirect
-    @precincts = Precinct.election(@current_election).
-      where(municipality: @municipality).sort_by { |p| p.district_rank }
+    if @current_election.state == 'he'
+      @precincts = Precinct.election(@current_election).
+        where(municipality: @municipality).sort_by { |p| p.district_rank }
+      render 'show_ltwh_municipality'
+    else
+      @precincts = Precinct.election(@current_election).
+        where(municipality: @municipality).sort_by { |p| p.district_rank }
+    end
   end
 
   private

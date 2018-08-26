@@ -14,12 +14,14 @@
     </a>
     <div class='election-indicator'>Aktive Wahl: hallo</div>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <%= form_tag('/search', local: true, method: :get, class: 'form-inline searchModule' ) do %>
-        <%= text_field_tag(:q, nil, data: { behavior: 'autocomplete' },
-                           placeholder: 'WK, Gemeinde, ...', id: 'searchField',
-                          class: 'form-control mr-sm-2') %>
-                        <%= button_tag('Suchen', class: 'btn btn-outline-success my-2 my-sm-0',
-                                       id: 'searchSubmit', type: 'submit') %>
+      <% if user_signed_in? %>
+        <%= form_tag('/search', local: true, method: :get, class: 'form-inline searchModule' ) do %>
+          <%= text_field_tag(:q, nil, data: { behavior: 'autocomplete' },
+                             placeholder: 'WK, Gemeinde, ...', id: 'searchField',
+                            class: 'form-control mr-sm-2') %>
+                          <%= button_tag('Suchen', class: 'btn btn-outline-success my-2 my-sm-0',
+                                         id: 'searchSubmit', type: 'submit') %>
+        <% end %>
       <% end %>
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -30,13 +32,16 @@
   </div>
 </nav>
 
-<div class='container indicatorRow'>
-  <div class='row'>
-    <div class='col-sm-12'>
-      <%= render 'layouts/indicator' %>
+
+<% if user_signed_in? %>
+  <div class='container indicatorRow'>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <%= render 'layouts/indicator' %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
 
 <% flash.each do |key, value| %>
   <div class='container <%= "fb-#{key}" %>' id="flashBox">

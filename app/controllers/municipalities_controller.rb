@@ -13,6 +13,11 @@ class MunicipalitiesController < ApplicationController
         where(municipality: @municipality).
         sort_by { |p| p.district_score }.reverse!
       render 'show_ltwh_municipality'
+    elsif @current_election.state == 'by'
+      @precincts = Precinct.election(@current_election).
+        where(municipality: @municipality).
+        sort_by { |p| p.district_score }.reverse!
+      render 'show_ltwb_municipality'
     else
       @precincts = Precinct.election(@current_election).
         where(municipality: @municipality).sort_by { |p| p.district_rank }

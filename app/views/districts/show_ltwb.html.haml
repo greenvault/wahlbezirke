@@ -1,0 +1,50 @@
+.row
+  .col-sm-12
+    %ol.breadcrumb
+      - if @current_election.state == 'all'
+        %li.breadcrumb-item
+          = link_to 'Start', states_path
+        %li.breadcrumb-item.active
+          = link_to @district.state.name, state_path(@district.state)
+      - else
+        %li.breadcrumb-item
+          = link_to 'Start', districts_path
+      %li.breadcrumb-item
+        Wahlkreis
+        = @district.district_identifier
+.row
+  .col-sm-12
+    .heading
+      = link_to 'Wahlbezirke', district_path(@district.district_identifier), class: 'switcher activeSwitcher'
+      = link_to 'Gemeinden', district_path(@district.district_identifier, gemeinde: '1'), class: 'switcher passiveSwitcher'
+      %br
+      .districtInfo
+        Wahlkreis
+        = @district.district_identifier
+        = @district.name
+
+.row
+  .col-sm-12
+    %table.table.table-hover.table-striped.tablesorter
+      %thead
+        %tr
+          %th.titleMini(data-sort="string")
+            %span
+            Gemeinde
+          %th.dataMini.number(data-sort="string")
+            %span
+            Wahlbezirk
+          %th.dataMini.number(data-sort="float")
+            %span
+            Score (WK)
+          %th.bayernFiller
+      %tbody
+      - @precincts.each do |p|
+        %tr
+          %td
+            = link_to p.municipality.name, municipality_path(p.municipality.municipality_identifier)
+          %td.dataMini.number
+            = p.precinct_identifier
+          %td.dataMini.number
+            = display_score p.district_score
+          %td.bayernFiller

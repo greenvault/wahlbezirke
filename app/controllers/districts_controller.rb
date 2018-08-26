@@ -20,6 +20,18 @@ class DistrictsController < ApplicationController
           where(district: @district).sort_by { |p| p.district_score }.reverse!
         render 'show_ltwh'
       end
+    elsif @current_election.state == 'by'
+      @district = District.election(@current_election).
+        find_by(district_identifier: params[:id])
+      if params['gemeinde'] == '1'
+        @municipalities = Municipality.election(@current_election).
+          where(district: @district).sort_alphabetical_by(&:name)
+        render 'show_ltwb_municipalities'
+      else
+        @precincts = Precinct.election(@current_election).
+          where(district: @district).sort_by { |p| p.district_score }.reverse!
+        render 'show_ltwb'
+      end
     else
       @district = District.election(@current_election).
         find_by(district_identifier: params[:id])

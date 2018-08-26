@@ -1,0 +1,51 @@
+.row
+  .col-sm-12
+    %ol.breadcrumb
+      - if @current_election.state == 'all'
+        %li.breadcrumb-item
+          = link_to 'Start', states_path
+        %li.breadcrumb-item.active
+          = link_to @district.state.name, state_path(@district.state)
+      - else
+        %li.breadcrumb-item
+          = link_to 'Start', districts_path
+      %li.breadcrumb-item
+        Wahlkreis
+        = @district.district_identifier
+.row
+  .col-sm-12
+    .heading
+      = link_to 'Wahlbezirke', district_path(@district.district_identifier), class: 'switcher passiveSwitcher'
+      = link_to 'Gemeinden', district_path(@district.district_identifier, gemeinde: '1'), class: 'switcher activeSwitcher'
+      %br
+      .districtInfo
+        Wahlkreis
+        = @district.district_identifier
+        = @district.name
+
+.row
+  .col-sm-12
+    %table.table.table-hover.table-striped.tablesorter
+      %thead
+        %tr
+          %th(data-sort="string")
+            %span
+            Name
+          %th(data-sort="integer")
+            %span
+            Gemeinde-ID
+          %th(data-sort="integer")
+            %span
+            Gemeinde-Score
+          %th.municipalityLtwhFiller
+      %tbody
+      - @municipalities.each do |m|
+        %tr(data-link="#{municipality_path(m.municipality_identifier)}")
+          %td
+            = link_to m.name, municipality_path(m.municipality_identifier)
+          %td
+            = link_to id_cleaner(m.municipality_identifier),
+              municipality_path(m.municipality_identifier)
+          %td
+            = m.district_score
+          %td.municipalityLtwhFiller

@@ -23,20 +23,15 @@
           %th(data-sort="string")
             %span
             Wahlbezirk
-          %th(data-sort="string")
-            %span
-            Wahlbezirk-Name
           %th(data-sort="float")
             %span
             Targeting-Score im Wahlkreis
-          %th.filler
+          %th.bayernFiller
       %tbody
       - @precincts.each do |p|
         %tr
           %td
             = p.precinct_identifier
           %td
-            = p.name
-          %td
             = display_score p.district_score
-          %td.filler
+          %td.bayernFiller

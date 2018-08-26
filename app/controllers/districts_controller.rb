@@ -17,7 +17,7 @@ class DistrictsController < ApplicationController
         render 'show_ltwh_municipalities'
       else
         @precincts = Precinct.election(@current_election).
-          where(district: @district).sort_by { |p| p.district_score }
+          where(district: @district).sort_by { |p| p.district_score }.reverse!
         render 'show_ltwh'
       end
     else

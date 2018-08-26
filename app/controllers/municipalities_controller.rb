@@ -10,7 +10,8 @@ class MunicipalitiesController < ApplicationController
     find_or_redirect
     if @current_election.state == 'he'
       @precincts = Precinct.election(@current_election).
-        where(municipality: @municipality).sort_by { |p| p.district_rank }
+        where(municipality: @municipality).
+        sort_by { |p| p.district_score }.reverse!
       render 'show_ltwh_municipality'
     else
       @precincts = Precinct.election(@current_election).

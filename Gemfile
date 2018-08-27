@@ -20,6 +20,7 @@ gem 'redcarpet', '~> 3.4.0'
 gem 'emd', '~> 0.1.0'
 gem 'ransack', '~> 1.8', '>= 1.8.2'
 gem 'devise_saml_authenticatable', github: 'speedracr/devise_saml_authenticatable', branch: '1.3.1.1'
+gem 'pgreset'
 gem 'seedbank', '~> 0.5.0.pre'
 
 gem 'jquery-rails'

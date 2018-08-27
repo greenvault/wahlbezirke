@@ -32,7 +32,7 @@ precincts = 0
 districts = 0
 municipalities = 0
 
-File.readlines("#{Rails.root}/db/seeds/ltwb2018-precincts-mini.csv").drop(1).
+File.readlines("#{Rails.root}/db/seeds/ltwb2018-precincts.csv").drop(1).
   each do |i|
   state, ars, municipality, district_identifier, district_name,
     precinct_identifier, district_score, = i.chomp.split(';')

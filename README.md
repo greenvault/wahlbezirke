@@ -5,6 +5,8 @@ Die folgenden Features sind ausführlich im Trello-Board
 [greenvault/wahlbezirke](https://trello.com/b/xY9t6lKG/greenvault-wahlbezirke)
 dokumentiert.
 
+Diese Anwendung wurde in den Wahlatlas übertragen und wird daher nicht mehr weiterentwickelt.
+
 ## Implementiert
 - Modellierung der zu importierenden Daten
 - Frontend-Darstellung auf Gemeinde- und WK-Ebene
